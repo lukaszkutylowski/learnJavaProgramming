@@ -4,11 +4,11 @@ public class Slave extends Master {
 
     @Override
     public String getName() {
-        return super.getName();
+        return this.name;
     }
 
     @Override
-    public String returnName() {
-        return "NEW generate name";
+    public String getMessage() {
+        return "message from slave! ";
     }
 }

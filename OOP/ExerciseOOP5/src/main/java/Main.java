@@ -1,5 +1,3 @@
-import java.sql.SQLOutput;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -7,11 +5,11 @@ public class Main {
         Master master = new Master();
         System.out.println(master.name);
         System.out.println(master.getName());
-        System.out.println(master.returnName());
+        System.out.println(master.getMessage());
 
         Slave slave = new Slave();
         System.out.println(slave.name);
         System.out.println(slave.getName());
-        System.out.println(slave.returnName());
+        System.out.println(slave.getMessage());
     }
 }

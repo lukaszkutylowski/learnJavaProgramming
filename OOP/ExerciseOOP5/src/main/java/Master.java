@@ -1,12 +1,12 @@
 public class Master {
 
-    public String name = "master";
+    public String name = "mastersd";
 
     public String getName() {
         return this.name;
     }
 
-    public String returnName() {
+    public String getMessage() {
         return "hardcored text from master";
     }
 }
