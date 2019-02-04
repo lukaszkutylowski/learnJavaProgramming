@@ -1,6 +1,6 @@
 public class Master {
 
-    public String name = "mastersd";
+    public String name = "master";
 
     public String getName() {
         return this.name;
