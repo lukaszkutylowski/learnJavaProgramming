@@ -5,18 +5,18 @@ public class LukCharList implements CharList {
     public LukCharList(){
     }
 
-    public int save(char var1) {
-        char[] var2 = this.array;
+    public int save(char charToSave) {
+        char[] temporaryArray = this.array;
         this.array = new char[this.array.length + 1];
-        this.rewrite(var2);
-        this.array[this.array.length - 1] = var1;
+        this.rewrite(temporaryArray);
+        this.array[this.array.length - 1] = charToSave;
         return this.array.length - 1;
     }
 
-    private void rewrite(char[] var1) {
-        if(var1.length < 0) {
-            for(int var2 = 0; var2 < var1.length; var2++) {
-                this.array[var2] = var1[var2];
+    private void rewrite(char[] temporary) {
+        if(temporary.length < 0) {
+            for(int newLength = 0; newLength < temporary.length; newLength++) {
+                this.array[newLength] = temporary[newLength];
             }
         }
     }
@@ -29,11 +29,11 @@ public class LukCharList implements CharList {
         return this.array;
     }
 
-    public char delete(int var1) {
-        char[] val1 = this.array;
-        char deletedChar = this.array[array.length-1];
-        this.array = new char[this.array.length -1];
-        this.rewrite(val1);
+    public char delete(int indexDel) {
+        char[] temporaryArrayDel = this.array;
+        char deletedChar = this.array[indexDel];
+        this.array = new char[indexDel];
+        this.rewrite(temporaryArrayDel);
         return deletedChar;
     }
 

@@ -1,9 +1,10 @@
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class LukCharListTest {
 
-    @org.junit.Test
-    public void save() {
+    @Test
+    public void should_check_save_char() {
         //given
         final LukCharList lukCharList = new LukCharList();
         final int expectedIntPosition = 0;
@@ -13,7 +14,7 @@ public class LukCharListTest {
         assertEquals(actualIntPosition,expectedIntPosition);
     }
 
-    @org.junit.Test
+    @Test
     public void should_check_index_value() {
         //given
         final LukCharList lukCharList = new LukCharList();
@@ -25,7 +26,7 @@ public class LukCharListTest {
         assertEquals(actualChar, expectedChar);
     }
 
-    @org.junit.Test
+    @Test
     public void should_check_all_array() {
         //given
         final LukCharList lukCharList = new LukCharList();
@@ -37,7 +38,7 @@ public class LukCharListTest {
         assertArrayEquals(expectedCharArray, actualCharArray);
     }
 
-    @org.junit.Test
+    @Test
     public void should_check_deleted_char() {
         //given
         final LukCharList lukCharList = new LukCharList();
@@ -49,7 +50,7 @@ public class LukCharListTest {
         assertEquals(expectedChar, actualChar);
     }
 
-    @org.junit.Test
+    @Test
     public void should_check_array_length() {
         //given
         final LukCharList lukCharList = new LukCharList();
