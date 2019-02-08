@@ -2,5 +2,6 @@ package logic;
 
 public interface Clock {
 
-    String convertTime(String time);
+    String convertSeconds(String time);
+    String convertFiveHrs(String time);
 }

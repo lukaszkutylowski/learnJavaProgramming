@@ -17,11 +17,15 @@ public class BerlinClock implements Clock {
      *
      * @return
      */
-    public String convertTime(String time) {
+    public String convertSeconds(String time) {
         // TDD - Tested Driven Development - Programowanie Sterowane Testami
 
         final int seconds = time.charAt(4) + time.charAt(5);
 
         return seconds % 2 > 0 ? "Y" : "O";
+    }
+
+    public String convertFiveHrs(String time) {
+        return "OOOO";
     }
 }
