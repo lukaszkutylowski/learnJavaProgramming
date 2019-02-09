@@ -53,11 +53,11 @@ public class BerlinClockTest {
     public void should_return_convert_single_hours() {
         //given
         final BerlinClock berlinClock = new BerlinClock();
-        final String expectedLightMarker0Hrs = "0000";
-        final String expectedLightMarker1Hrs = "R000";
-        final String expectedLightMarker2Hrs = "RR00";
-        final String expectedLightMarker3Hrs = "RRR0";
-        final String expectedLightMarker4Hrs = "RRR0";
+        final String expectedLightMarker0Hrs = "OOOO";
+        final String expectedLightMarker1Hrs = "ROOO";
+        final String expectedLightMarker2Hrs = "RROO";
+        final String expectedLightMarker3Hrs = "RRRO";
+        final String expectedLightMarker4Hrs = "RRRR";
         final String testTime1 = "00:00:00";
         final String testTime2 = "23:59:59";
         final String testTime3 = "02:04:00";
