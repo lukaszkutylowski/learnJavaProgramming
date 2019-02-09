@@ -20,7 +20,8 @@ public class BerlinClock implements Clock {
     public String convertSeconds(String time) {
         // TDD - Tested Driven Development - Programowanie Sterowane Testami
 
-        final int seconds = time.charAt(6) + time.charAt(7);
+        final String secondsString = Character.toString(time.charAt(6)) + Character.toString(time.charAt(7));
+        final int seconds = Integer.parseInt(secondsString);
 
         return seconds % 2 > 0 ? "Y" : "O";
     }
@@ -29,7 +30,6 @@ public class BerlinClock implements Clock {
 
         final String hoursString = Character.toString(time.charAt(0)) + Character.toString(time.charAt(1));
         final int hours = Integer.parseInt(hoursString);
-        System.out.println(hours);
 
         if ((hours >= 0) && (hours < 5)) return "OOOO";
         else if ((hours >= 5) && (hours < 10)) return "ROOO";
