@@ -38,4 +38,10 @@ public class BerlinClock implements Clock {
         else if ((hours >= 20) && (hours < 24)) return "RRRR";
         else return "----";
     }
+
+    public String convertSingleHrs(String time) {
+        return null;
+    }
+
+
 }
