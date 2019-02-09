@@ -40,7 +40,16 @@ public class BerlinClock implements Clock {
     }
 
     public String convertSingleHrs(String time) {
-        return null;
+
+        final String hoursString = Character.toString(time.charAt(0)) + Character.toString(time.charAt(1));
+        final int hours = Integer.parseInt(hoursString);
+
+        if (hours % 5 == 0) return "OOOO";
+        if (hours % 5 == 1) return "ROOO";
+        if (hours % 5 == 2) return "RROO";
+        if (hours % 5 == 3) return "RRRO";
+        if (hours % 5 == 4) return "RRRR";
+        else return "----";
     }
 
 
