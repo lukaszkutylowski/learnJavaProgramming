@@ -20,12 +20,22 @@ public class BerlinClock implements Clock {
     public String convertSeconds(String time) {
         // TDD - Tested Driven Development - Programowanie Sterowane Testami
 
-        final int seconds = time.charAt(4) + time.charAt(5);
+        final int seconds = time.charAt(6) + time.charAt(7);
 
         return seconds % 2 > 0 ? "Y" : "O";
     }
 
     public String convertFiveHrs(String time) {
-        return "OOOO";
+
+        final String hoursString = Character.toString(time.charAt(0)) + Character.toString(time.charAt(1));
+        final int hours = Integer.parseInt(hoursString);
+        System.out.println(hours);
+
+        if ((hours >= 0) && (hours < 5)) return "OOOO";
+        else if ((hours >= 5) && (hours < 10)) return "ROOO";
+        else if ((hours >= 10) && (hours < 15)) return "RROO";
+        else if ((hours >= 15) && (hours < 20)) return "RRRO";
+        else if ((hours >= 20) && (hours < 24)) return "RRRR";
+        else return "----";
     }
 }

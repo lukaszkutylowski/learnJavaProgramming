@@ -30,17 +30,17 @@ public class BerlinClockTest {
         final String expectedLightMarker5to9H = "ROOO";
         final String expectedLightMarker15to19H = "RRRO";
         final String expectedLightMarker20to23H = "RRRR";
-        final String midnight = "00:00:00";
-        final String lastSecondAday = "23:59:59";
-        final String twoHrsFourMin = "02:04:00";
-        final String eightHrsTwentyThreeMin = "08:23:00";
-        final String sixteenHrsThirtyFiveMin = "16:35:00";
+        final String testTime1 = "00:00:00";
+        final String testTime2 = "23:59:59";
+        final String testTime3 = "02:04:00";
+        final String testTime4 = "08:23:00";
+        final String testTime6 = "16:35:00";
         //when
-        final String actualFiveHrs0 = berlinClock.convertFiveHrs(midnight);
-        final String actualFiveHrs1 = berlinClock.convertFiveHrs(lastSecondAday);
-        final String actualFiveHrs2 = berlinClock.convertFiveHrs(twoHrsFourMin);
-        final String actualFiveHrs3 = berlinClock.convertFiveHrs(eightHrsTwentyThreeMin);
-        final String actualFiveHrs4 = berlinClock.convertFiveHrs(sixteenHrsThirtyFiveMin);
+        final String actualFiveHrs0 = berlinClock.convertFiveHrs(testTime1);
+        final String actualFiveHrs1 = berlinClock.convertFiveHrs(testTime2);
+        final String actualFiveHrs2 = berlinClock.convertFiveHrs(testTime3);
+        final String actualFiveHrs3 = berlinClock.convertFiveHrs(testTime4);
+        final String actualFiveHrs4 = berlinClock.convertFiveHrs(testTime6);
         //then
         assertEquals(expectedLightMarker0to4H, actualFiveHrs0);
         assertEquals(expectedLightMarker20to23H, actualFiveHrs1);
