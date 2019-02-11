@@ -102,4 +102,31 @@ public class BerlinClockTest {
         assertEquals(expectedLightMarker20min, actualFiveMinutes4);
         assertEquals(expectedLightMarker35min, actualFiveMinutes5);
     }
+
+    @Test
+    public void should_return_convert_single_minutes() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker0min = "OOOO";
+        final String expectedLightMarker2min = "YYOO";
+        final String expectedLightMarker4min = "YYYY";
+        final String testTime1 = "00:00:00";
+        final String testTime2 = "23:59:59";
+        final String testTime3 = "12:32:00";
+        final String testTime4 = "12:34:00";
+        final String testTime5 = "12:35:00";
+        //when
+        final String actualSingleMinutes1 = berlinClock.convertSingleMinutes(testTime1);
+        final String actualSingleMinutes2 = berlinClock.convertSingleMinutes(testTime2);
+        final String actualSingleMinutes3 = berlinClock.convertSingleMinutes(testTime3);
+        final String actualSingleMinutes4 = berlinClock.convertSingleMinutes(testTime4);
+        final String actualSingleMinutes5 = berlinClock.convertSingleMinutes(testTime5);
+        //then
+        assertEquals(expectedLightMarker0min, actualSingleMinutes1);
+        assertEquals(expectedLightMarker4min, actualSingleMinutes2);
+        assertEquals(expectedLightMarker2min, actualSingleMinutes3);
+        assertEquals(expectedLightMarker4min, actualSingleMinutes4);
+        assertEquals(expectedLightMarker0min, actualSingleMinutes5);
+
+    }
 }
