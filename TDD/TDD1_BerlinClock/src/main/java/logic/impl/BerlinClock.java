@@ -70,4 +70,16 @@ public class BerlinClock implements Clock {
         else if ((minutes >= 50) && (minutes < 55)) return "YYRYYRYYRYO";
         else return "YYRYYRYYRYY";
     }
+
+    public String convertSingleMinutes(String time) {
+
+        final String minutesString = Character.toString(time.charAt(4));
+        final int minutes = Integer.parseInt(minutesString);
+
+        if (minutes % 5 == 1) return "YOOO";
+        else if (minutes % 5 == 2) return "YYOO";
+        else if (minutes % 5 == 3) return "YYYO";
+        else if (minutes % 5 == 4) return "YYYY";
+        else return "OOOO";
+    }
 }
