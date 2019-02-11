@@ -54,7 +54,6 @@ public class BerlinClockTest {
         //given
         final BerlinClock berlinClock = new BerlinClock();
         final String expectedLightMarker0Hrs = "OOOO";
-        final String expectedLightMarker1Hrs = "ROOO";
         final String expectedLightMarker2Hrs = "RROO";
         final String expectedLightMarker3Hrs = "RRRO";
         final String expectedLightMarker4Hrs = "RRRR";
@@ -75,5 +74,32 @@ public class BerlinClockTest {
         assertEquals(expectedLightMarker2Hrs, actualSingleHrs2);
         assertEquals(expectedLightMarker3Hrs, actualSingleHrs3);
         assertEquals(expectedLightMarker4Hrs, actualSingleHrs4);
+    }
+
+    @Test
+    public void should_return_convert_five_minutes() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker0min = "OOOOOOOOOOO";
+        final String expectedLightMarker20min = "YYRYOOOOOOO";
+        final String expectedLightMarker35min = "YYRYYRYOOOO";
+        final String expectedLightMarker55min = "YYRYYRYYRYY";
+        final String testTime1 = "00:00:00";
+        final String testTime2 = "23:59:59";
+        final String testTime3 = "12:04:00";
+        final String testTime4 = "12:23:00";
+        final String testTime5 = "12:35:00";
+        //when
+        final String actualFiveMinutes1 = berlinClock.conversionFiveMinutes(testTime1);
+        final String actualFiveMinutes2 = berlinClock.conversionFiveMinutes(testTime2);
+        final String actualFiveMinutes3 = berlinClock.conversionFiveMinutes(testTime3);
+        final String actualFiveMinutes4 = berlinClock.conversionFiveMinutes(testTime4);
+        final String actualFiveMinutes5 = berlinClock.conversionFiveMinutes(testTime5);
+        //then
+        assertEquals(expectedLightMarker0min, actualFiveMinutes1);
+        assertEquals(expectedLightMarker55min, actualFiveMinutes2);
+        assertEquals(expectedLightMarker0min, actualFiveMinutes3);
+        assertEquals(expectedLightMarker20min, actualFiveMinutes4);
+        assertEquals(expectedLightMarker35min, actualFiveMinutes5);
     }
 }
