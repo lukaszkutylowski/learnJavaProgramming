@@ -23,7 +23,7 @@ public class BerlinClock implements Clock {
         final String secondsString = Character.toString(time.charAt(6)) + Character.toString(time.charAt(7));
         final int seconds = Integer.parseInt(secondsString);
 
-        return seconds % 2 > 0 ? "Y" : "O";
+        return seconds % 2 > 0 ? "O" : "Y";
     }
 
     public String convertFiveHrs(String time) {
@@ -81,5 +81,16 @@ public class BerlinClock implements Clock {
         else if (minutes % 5 == 3) return "YYYO";
         else if (minutes % 5 == 4) return "YYYY";
         else return "OOOO";
+    }
+
+    public String integrationOfLightMarkers(String time) {
+
+        final String seconds = convertSeconds(time);
+        final String fiveHrs = convertFiveHrs(time);
+        final String singleHrs = convertSingleHrs(time);
+        final String fiveMinutes = conversionFiveMinutes(time);
+        final String singleMinutes = convertSingleMinutes(time);
+
+        return seconds + fiveHrs + singleHrs + fiveMinutes + singleMinutes;
     }
 }
