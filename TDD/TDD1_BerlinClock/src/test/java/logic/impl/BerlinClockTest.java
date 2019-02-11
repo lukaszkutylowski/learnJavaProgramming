@@ -10,8 +10,8 @@ public class BerlinClockTest {
     public void should_return_convert_seconds() {
         //given
         final BerlinClock berlinClock = new BerlinClock();
-        final String expectedLightMarkerEven = "O";
-        final String expectedLightMarkerOdd = "Y";
+        final String expectedLightMarkerEven = "Y";
+        final String expectedLightMarkerOdd = "O";
         final String even = "00:00:00";
         final String odd = "23:59:59";
         //when
@@ -128,5 +128,29 @@ public class BerlinClockTest {
         assertEquals(expectedLightMarker4min, actualSingleMinutes4);
         assertEquals(expectedLightMarker0min, actualSingleMinutes5);
 
+    }
+
+    @Test
+    public void integrationOfLightMarkers() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedMarker1 = "YOOOOOOOOOOOOOOOOOOOOOOO";
+        final String expectedMarker2 = "ORRRRRRROYYRYYRYYRYYYYYY";
+        final String expectedMarker3 = "YRRROROOOYYRYYRYYRYOOOOO";
+        final String expectedMarker4 = "ORROOROOOYYRYYRYOOOOYYOO";
+        final String testTime1 = "00:00:00";
+        final String testTime2 = "23:59:59";
+        final String testTime3 = "16:50:06";
+        final String testTime4 = "11:37:01";
+        //when
+        final String actualMarker1 = berlinClock.integrationOfLightMarkers(testTime1);
+        final String actualMarker2 = berlinClock.integrationOfLightMarkers(testTime2);
+        final String actualMarker3 = berlinClock.integrationOfLightMarkers(testTime3);
+        final String actualMarker4 = berlinClock.integrationOfLightMarkers(testTime4);
+        //then
+        assertEquals(expectedMarker1,actualMarker1);
+        assertEquals(expectedMarker2,actualMarker2);
+        assertEquals(expectedMarker3,actualMarker3);
+        assertEquals(expectedMarker4,actualMarker4);
     }
 }
