@@ -52,5 +52,22 @@ public class BerlinClock implements Clock {
         else return "----";
     }
 
+    public String conversionFiveMinutes(String time) {
 
+        final String minutesString = Character.toString(time.charAt(3)) + Character.toString(time.charAt(4));
+        final int minutes = Integer.parseInt(minutesString);
+
+        if (minutes < 5) return "OOOOOOOOOOO";
+        else if ((minutes >= 5) && (minutes < 10)) return "YOOOOOOOOOO";
+        else if ((minutes >= 10) && (minutes < 15)) return "YYOOOOOOOOO";
+        else if ((minutes >= 15) && (minutes < 20)) return "YYROOOOOOOO";
+        else if ((minutes >= 20) && (minutes < 25)) return "YYRYOOOOOOO";
+        else if ((minutes >= 25) && (minutes < 30)) return "YYRYYOOOOOO";
+        else if ((minutes >= 30) && (minutes < 35)) return "YYRYYROOOOO";
+        else if ((minutes >= 35) && (minutes < 40)) return "YYRYYRYOOOO";
+        else if ((minutes >= 40) && (minutes < 45)) return "YYRYYRYYOOO";
+        else if ((minutes >= 45) && (minutes < 50)) return "YYRYYRYYROO";
+        else if ((minutes >= 50) && (minutes < 55)) return "YYRYYRYYRYO";
+        else return "YYRYYRYYRYY";
+    }
 }
