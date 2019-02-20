@@ -4,39 +4,41 @@ import logic.Clock;
 
 public class BerlinClock implements Clock {
 
-    /**
-     * @param time in following format: HH:MM:SS shall be converted and returned as Berlin clock light bulb sequence
-     *             Seconds:
-     *             00 -> O
-     *             01 -> Y
-     *             02 -> O
-     *             03 -> Y
-     *             ...
-     *             58 -> 0
-     *             59 -> Y
-     *
-     * @return
-     */
-    public String convertSeconds(String time) {
-        // TDD - Tested Driven Development - Programowanie Sterowane Testami
+    public String convertTime(String time) {
+        int timeInt[] = new int[3];
 
-        final String secondsString = Character.toString(time.charAt(6)) + Character.toString(time.charAt(7));
-        final int seconds = Integer.parseInt(secondsString);
+        timeInt[0] = convertCharsToInt(time, time.charAt(0), time.charAt(1));
+        timeInt[1] = convertCharsToInt(time, time.charAt(3), time.charAt(4));
+        timeInt[2] = convertCharsToInt(time, time.charAt(6), time.charAt(7));
 
-        return seconds % 2 > 0 ? "O" : "Y";
+        final String seconds = convertSeconds(timeInt);
+        final String fiveHrs = convertFiveHrs(timeInt);
+        final String singleHrs = convertSingleHrs(time);
+        final String fiveMinutes = conversionFiveMinutes(time);
+        final String singleMinutes = convertSingleMinutes(time);
+
+        return seconds + fiveHrs + singleHrs + fiveMinutes + singleMinutes;
     }
 
-    public String convertFiveHrs(String time) {
+    public int convertCharsToInt(String time, char first, char second) {
+        StringBuilder stringBuilder = new StringBuilder();
 
-        final String hoursString = Character.toString(time.charAt(0)) + Character.toString(time.charAt(1));
-        final int hours = Integer.parseInt(hoursString);
+        stringBuilder.append(time.charAt(first));
+        stringBuilder.append(time.charAt(second));
 
-        if ((hours >= 0) && (hours < 5)) return "OOOO";
-        else if ((hours >= 5) && (hours < 10)) return "ROOO";
-        else if ((hours >= 10) && (hours < 15)) return "RROO";
-        else if ((hours >= 15) && (hours < 20)) return "RRRO";
-        else if ((hours >= 20) && (hours < 24)) return "RRRR";
-        else return "----";
+        return Integer.parseInt(stringBuilder.toString());
+    }
+
+    public String convertSeconds(int[] timeInt) {
+        return timeInt[2] % 2 > 0 ? "O" : "Y";
+    }
+
+    public String convertFiveHrs(int[] timeInt) {
+        if (timeInt[0] % 19 > 0) return "RRRR";
+        else if (timeInt[0] % 14 > 0) return "RRRO";
+        else if (timeInt[0] % 9 > 0) return "RROO";
+        else if (timeInt[0] % 4 > 0) return "ROOO";
+        else return "OOOO";
     }
 
     public String convertSingleHrs(String time) {
@@ -81,16 +83,5 @@ public class BerlinClock implements Clock {
         else if (minutes % 5 == 3) return "YYYO";
         else if (minutes % 5 == 4) return "YYYY";
         else return "OOOO";
-    }
-
-    public String integrationOfLightMarkers(String time) {
-
-        final String seconds = convertSeconds(time);
-        final String fiveHrs = convertFiveHrs(time);
-        final String singleHrs = convertSingleHrs(time);
-        final String fiveMinutes = conversionFiveMinutes(time);
-        final String singleMinutes = convertSingleMinutes(time);
-
-        return seconds + fiveHrs + singleHrs + fiveMinutes + singleMinutes;
     }
 }
