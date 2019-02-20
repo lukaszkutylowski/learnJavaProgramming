@@ -23,29 +23,62 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void should_return_five_hours() {
+    public void should_return_five_hours_when_hrs_is_00() {
         //given
         final BerlinClock berlinClock = new BerlinClock();
         final String expectedLightMarker0to4H = "OOOO";
-        final String expectedLightMarker5to9H = "ROOO";
-        final String expectedLightMarker15to19H = "RRRO";
-        final String expectedLightMarker20to23H = "RRRR";
         final int[] testTime1 = {0,0,0};
-        final int[] testTime2 = {23,59,59};
-        final int[] testTime3 = {2,4,0};
-        final int[] testTime4 = {8,23,0};
-        final int[] testTime5 = {16,35,0};
         //when
         final String actualFiveHrs0 = berlinClock.convertFiveHrs(testTime1);
-        final String actualFiveHrs1 = berlinClock.convertFiveHrs(testTime2);
-        final String actualFiveHrs2 = berlinClock.convertFiveHrs(testTime3);
-        final String actualFiveHrs3 = berlinClock.convertFiveHrs(testTime4);
-        final String actualFiveHrs4 = berlinClock.convertFiveHrs(testTime5);
         //then
         assertEquals(expectedLightMarker0to4H, actualFiveHrs0);
+    }
+
+    @Test
+    public void should_return_five_hours_when_hrs_is_23() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker20to23H = "RRRR";
+        final int[] testTime2 = {23,59,59};
+        //when
+        final String actualFiveHrs1 = berlinClock.convertFiveHrs(testTime2);
+        //then
         assertEquals(expectedLightMarker20to23H, actualFiveHrs1);
+    }
+
+    @Test
+    public void should_return_five_hours_when_hrs_is_02() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker0to4H = "OOOO";
+        final int[] testTime3 = {2,4,0};
+        //when
+        final String actualFiveHrs2 = berlinClock.convertFiveHrs(testTime3);
+        //then
         assertEquals(expectedLightMarker0to4H, actualFiveHrs2);
+    }
+
+    @Test
+    public void should_return_five_hours_when_hrs_is_08() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker5to9H = "ROOO";
+        final int[] testTime4 = {8,23,0};
+        //when
+        final String actualFiveHrs3 = berlinClock.convertFiveHrs(testTime4);
+        //then
         assertEquals(expectedLightMarker5to9H, actualFiveHrs3);
+    }
+
+    @Test
+    public void should_return_five_hours_when_hrs_is_16() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker15to19H = "RRRO";
+        final int[] testTime5 = {16,35,0};
+        //when
+        final String actualFiveHrs4 = berlinClock.convertFiveHrs(testTime5);
+        //then
         assertEquals(expectedLightMarker15to19H, actualFiveHrs4);
     }
 
