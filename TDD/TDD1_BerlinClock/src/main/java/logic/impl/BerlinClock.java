@@ -13,14 +13,14 @@ public class BerlinClock implements Clock {
 
         final String seconds = convertSeconds(timeInt);
         final String fiveHrs = convertFiveHrs(timeInt);
-        final String singleHrs = convertSingleHrs(time);
+        final String singleHrs = convertSingleHrs(timeInt);
         final String fiveMinutes = conversionFiveMinutes(time);
         final String singleMinutes = convertSingleMinutes(time);
 
         return seconds + fiveHrs + singleHrs + fiveMinutes + singleMinutes;
     }
 
-    public int convertCharsToInt(String time, char first, char second) {
+    private int convertCharsToInt(String time, char first, char second) {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(time.charAt(first));
@@ -41,17 +41,23 @@ public class BerlinClock implements Clock {
         else return "OOOO";
     }
 
-    public String convertSingleHrs(String time) {
+    public String convertSingleHrs(int[] timeInt) {
+        int modulo = timeInt[0] % 5;
 
-        final String hoursString = Character.toString(time.charAt(0)) + Character.toString(time.charAt(1));
-        final int hours = Integer.parseInt(hoursString);
+        if(modulo <= 0) return "OOOO";
+        else return convertIntToString(modulo);
+    }
 
-        if (hours % 5 == 0) return "OOOO";
-        if (hours % 5 == 1) return "ROOO";
-        if (hours % 5 == 2) return "RROO";
-        if (hours % 5 == 3) return "RRRO";
-        if (hours % 5 == 4) return "RRRR";
-        else return "----";
+    private String convertIntToString(int modulo){
+        String light = "";
+
+        for(int i = 1; i <= modulo; i++)
+            light += "R";
+
+        while(light.length() < 4)
+            light += "O";
+
+        return light;
     }
 
     public String conversionFiveMinutes(String time) {
