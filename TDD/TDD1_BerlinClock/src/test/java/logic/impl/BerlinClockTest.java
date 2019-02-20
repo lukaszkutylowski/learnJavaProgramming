@@ -264,26 +264,50 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void should_return_time_lights() {
+    public void should_return_time_lights_when_time_is_00_00_00() {
         //given
         final BerlinClock berlinClock = new BerlinClock();
         final String expectedMarker1 = "YOOOOOOOOOOOOOOOOOOOOOOO";
-        final String expectedMarker2 = "ORRRRRRROYYRYYRYYRYYYYYY";
-        final String expectedMarker3 = "YRRROROOOYYRYYRYYRYOOOOO";
-        final String expectedMarker4 = "ORROOROOOYYRYYRYOOOOYYOO";
         final String testTime1 = "00:00:00";
-        final String testTime2 = "23:59:59";
-        final String testTime3 = "16:50:06";
-        final String testTime4 = "11:37:01";
         //when
         final String actualMarker1 = berlinClock.convertTime(testTime1);
-        final String actualMarker2 = berlinClock.convertTime(testTime2);
-        final String actualMarker3 = berlinClock.convertTime(testTime3);
-        final String actualMarker4 = berlinClock.convertTime(testTime4);
         //then
         assertEquals(expectedMarker1,actualMarker1);
+    }
+
+    @Test
+    public void should_return_time_lights_when_time_is_23_59_59() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedMarker2 = "ORRRRRRROYYRYYRYYRYYYYYY";
+        final String testTime2 = "23:59:59";
+        //when
+        final String actualMarker2 = berlinClock.convertTime(testTime2);
+        //then
         assertEquals(expectedMarker2,actualMarker2);
+        }
+
+    @Test
+    public void should_return_time_lights_when_time_is_16_50_06() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedMarker3 = "YRRROROOOYYRYYRYYRYOOOOO";
+        final String testTime3 = "16:50:06";
+        //when
+        final String actualMarker3 = berlinClock.convertTime(testTime3);
+        //then
         assertEquals(expectedMarker3,actualMarker3);
+    }
+
+    @Test
+    public void should_return_time_lights_when_time_is_11_37_01() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedMarker4 = "ORROOROOOYYRYYRYOOOOYYOO";
+        final String testTime4 = "11:37:01";
+        //when
+        final String actualMarker4 = berlinClock.convertTime(testTime4);
+        //then
         assertEquals(expectedMarker4,actualMarker4);
     }
 }
