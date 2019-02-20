@@ -7,20 +7,14 @@ public class BerlinClock implements Clock {
     public String convertTime(String time) {
         int timeInt[] = new int[3];
 
-        timeInt[0] = convertCharsToInt(time, time.charAt(0), time.charAt(1));
-        timeInt[1] = convertCharsToInt(time, time.charAt(3), time.charAt(4));
-        timeInt[2] = convertCharsToInt(time, time.charAt(6), time.charAt(7));
+        timeInt[0] = convertCharsToInt(time, 'h');
+        timeInt[1] = convertCharsToInt(time, 'm');
+        timeInt[2] = convertCharsToInt(time, 's');
 
-        final String seconds = convertSeconds(timeInt);
-        final String fiveHrs = convertFiveHrs(timeInt);
-        final String singleHrs = convertSingleHrs(timeInt);
-        final String fiveMinutes = conversionFiveMinutes(timeInt);
-        final String singleMinutes = convertSingleMinutes(timeInt);
-
-        return seconds + fiveHrs + singleHrs + fiveMinutes + singleMinutes;
+        return convertSeconds(timeInt) + convertFiveHrs(timeInt) + convertSingleHrs(timeInt) + conversionFiveMinutes(timeInt) + convertSingleMinutes(timeInt);
     }
 
-    private int convertCharsToInt(String time, char first, char second) {
+    private int convertCharsToInt(String time, char flag) {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append(time.charAt(first));
@@ -34,11 +28,14 @@ public class BerlinClock implements Clock {
     }
 
     public String convertFiveHrs(int[] timeInt) {
-        if (timeInt[0] % 19 > 0) return "RRRR";
-        else if (timeInt[0] % 14 > 0) return "RRRO";
-        else if (timeInt[0] % 9 > 0) return "RROO";
-        else if (timeInt[0] % 4 > 0) return "ROOO";
-        else return "OOOO";
+        if(timeInt[0] < 5) { return "OOOO"; }
+        else {
+            if (timeInt[0] % 19 > 0) return "RRRR";
+            else if (timeInt[0] % 14 > 0) return "RRRO";
+            else if (timeInt[0] % 9 > 0) return "RROO";
+            else if (timeInt[0] % 4 > 0) return "ROOO";
+            else return "OOOO";
+        }
     }
 
     public String convertSingleHrs(int[] timeInt) {
@@ -76,16 +73,15 @@ public class BerlinClock implements Clock {
         if((numbersOfQuarter == 0) && (timeQuarter < 5)) {
             return "OO";
         } else if(numbersOfQuarter < 3){
-            if(timeQuarter % 14 > 0) return "YYR";
-            else if(timeQuarter % 9 > 0) return "YYO";
-            else if(timeQuarter % 4 > 0) return "YOO";
+            if(timeQuarter > 14) return "YYR";
+            else if(timeQuarter > 9) return "YYO";
+            else if(timeQuarter > 4) return "YOO";
             else return "OO";
         } else {
-            if(timeQuarter % 9 > 0) return "YY";
-            else if (timeQuarter % 4 > 0) return "YO";
+            if(timeQuarter > 9) return "YY";
+            else if (timeQuarter > 4) return "YO";
             else return "OO";
         }
-
     }
 
     private String initialLights(int numbersOfQuater) {
