@@ -203,28 +203,62 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void should_return_single_minutes() {
+    public void should_return_single_minutes_when_min_is_00() {
         //given
         final BerlinClock berlinClock = new BerlinClock();
         final String expectedLightMarker0min = "OOOO";
-        final String expectedLightMarker2min = "YYOO";
-        final String expectedLightMarker4min = "YYYY";
         final int[] testTime1 = {0,0,0};
-        final int[] testTime2 = {23,59,59};
-        final int[] testTime3 = {12,32,0};
-        final int[] testTime4 = {12,34,0};
-        final int[] testTime5 = {12,35,0};
         //when
         final String actualSingleMinutes1 = berlinClock.convertSingleMinutes(testTime1);
-        final String actualSingleMinutes2 = berlinClock.convertSingleMinutes(testTime2);
-        final String actualSingleMinutes3 = berlinClock.convertSingleMinutes(testTime3);
-        final String actualSingleMinutes4 = berlinClock.convertSingleMinutes(testTime4);
-        final String actualSingleMinutes5 = berlinClock.convertSingleMinutes(testTime5);
         //then
         assertEquals(expectedLightMarker0min, actualSingleMinutes1);
+    }
+
+    @Test
+    public void should_return_single_minutes_when_min_is_59() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker4min = "YYYY";
+        final int[] testTime2 = {23,59,59};
+        //when
+        final String actualSingleMinutes2 = berlinClock.convertSingleMinutes(testTime2);
+        //then
         assertEquals(expectedLightMarker4min, actualSingleMinutes2);
+    }
+
+    @Test
+    public void should_return_single_minutes_when_min_is_32() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker2min = "YYOO";
+        final int[] testTime3 = {12,32,0};
+        //when
+        final String actualSingleMinutes3 = berlinClock.convertSingleMinutes(testTime3);
+        //then
         assertEquals(expectedLightMarker2min, actualSingleMinutes3);
+    }
+
+    @Test
+    public void should_return_single_minutes_when_min_is_34() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker4min = "YYYY";
+        final int[] testTime4 = {12,34,0};
+        //when
+        final String actualSingleMinutes4 = berlinClock.convertSingleMinutes(testTime4);
+        //then
         assertEquals(expectedLightMarker4min, actualSingleMinutes4);
+    }
+
+    @Test
+    public void should_return_single_minutes_when_min_is_35() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker0min = "OOOO";
+        final int[] testTime5 = {12,35,0};
+        //when
+        final String actualSingleMinutes5 = berlinClock.convertSingleMinutes(testTime5);
+        //then
         assertEquals(expectedLightMarker0min, actualSingleMinutes5);
 
     }
