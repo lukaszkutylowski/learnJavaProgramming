@@ -34,14 +34,32 @@ public class BerlinClock implements Clock {
     }
 
     public String convertFiveHrs(int[] timeInt) {
-        if(timeInt[0] < 5) { return "OOOO"; }
+        String fiveHrsLight;
+        int howMuch = 0;
+        if(timeInt[0] < 5) { fiveHrsLight = fiveHrsLightBulider(0); }
         else {
-            if (timeInt[0] % 19 > 0) return "RRRR";
-            else if (timeInt[0] % 14 > 0) return "RRRO";
-            else if (timeInt[0] % 9 > 0) return "RROO";
-            else if (timeInt[0] % 4 > 0) return "ROOO";
-            else return "OOOO";
+            int tempTime = 19;
+            for(int i = 4; timeInt[0] % tempTime > 0; i--) {
+                tempTime -= 5;
+                howMuch = i;
+            }
+            fiveHrsLight = fiveHrsLightBulider(howMuch);
         }
+        return fiveHrsLight;
+    }
+
+    private String fiveHrsLightBulider(int howMuchRed) {
+        String light = "";
+
+        for(int i = 0; i <= howMuchRed; i++) {
+            light += red;
+        }
+
+        while(light.length() < 4) {
+            light += off;
+        }
+
+        return light;
     }
 
     public String convertSingleHrs(int[] timeInt) {
