@@ -65,30 +65,34 @@ public class BerlinClock implements Clock {
         int timeQuarter = convertToQuarterTime(timeInt[1]);
         int numbersOfQuarter = timeInt[1] / 15;
 
-        return initialLights(numbersOfQuarter) + middleLight(timeQuarter) + complementLights(numbersOfQuarter);
+        return initialLights(numbersOfQuarter) + lastThreeLight(timeQuarter, numbersOfQuarter);
     }
 
-    private int convertToQuarterTime(int minuteInt) {
+    public int convertToQuarterTime(int minuteInt) {
         return minuteInt - (minuteInt / 15) * 15;
     }
 
-    private String middleLight(int timeQuarter) {
-        if (timeQuarter % 14 > 0) return "YYR";
-        else if (timeQuarter % 9 > 0) return "YYO";
-        else if (timeQuarter % 4 > 0) return "YOO";
-        else return "OOO";
+    private String lastThreeLight(int timeQuarter, int numbersOfQuarter) {
+        if((numbersOfQuarter == 0) && (timeQuarter < 5)) {
+            return "OO";
+        } else if(numbersOfQuarter < 3){
+            if(timeQuarter % 14 > 0) return "YYR";
+            else if(timeQuarter % 9 > 0) return "YYO";
+            else if(timeQuarter % 4 > 0) return "YOO";
+            else return "OO";
+        } else {
+            if(timeQuarter % 9 > 0) return "YY";
+            else if (timeQuarter % 4 > 0) return "YO";
+            else return "OO";
+        }
+
     }
 
     private String initialLights(int numbersOfQuater) {
         if(numbersOfQuater == 1) return "YYR";
         else if(numbersOfQuater == 2) return "YYRYYR";
-        else return "YYRYYRYYR";
-    }
-
-    private String complementLights(int numbersOfQuarter) {
-        if(numbersOfQuarter == 0) return "OOOOOOOO";
-        else if(numbersOfQuarter == 1) return "OOOOO";
-        else return "OO";
+        else if(numbersOfQuater == 3) return "YYRYYRYYR";
+        else return "OOOOOOOOO";
     }
 
     public String convertSingleMinutes(int[] timeInt) {
