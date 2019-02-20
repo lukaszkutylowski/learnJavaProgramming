@@ -14,7 +14,7 @@ public class BerlinClock implements Clock {
         final String seconds = convertSeconds(timeInt);
         final String fiveHrs = convertFiveHrs(timeInt);
         final String singleHrs = convertSingleHrs(timeInt);
-        final String fiveMinutes = conversionFiveMinutes(time);
+        final String fiveMinutes = conversionFiveMinutes(timeInt);
         final String singleMinutes = convertSingleMinutes(time);
 
         return seconds + fiveHrs + singleHrs + fiveMinutes + singleMinutes;
@@ -60,23 +60,34 @@ public class BerlinClock implements Clock {
         return light;
     }
 
-    public String conversionFiveMinutes(String time) {
+    public String conversionFiveMinutes(int[] timeInt) {
+        int timeQuarter = convertToQuarterTime(timeInt[1]);
+        int numbersOfQuarter = timeInt[1] / 15;
 
-        final String minutesString = Character.toString(time.charAt(3)) + Character.toString(time.charAt(4));
-        final int minutes = Integer.parseInt(minutesString);
+        return initialLights(numbersOfQuarter) + middleLight(timeQuarter) + complementLights(numbersOfQuarter);
+    }
 
-        if (minutes < 5) return "OOOOOOOOOOO";
-        else if ((minutes >= 5) && (minutes < 10)) return "YOOOOOOOOOO";
-        else if ((minutes >= 10) && (minutes < 15)) return "YYOOOOOOOOO";
-        else if ((minutes >= 15) && (minutes < 20)) return "YYROOOOOOOO";
-        else if ((minutes >= 20) && (minutes < 25)) return "YYRYOOOOOOO";
-        else if ((minutes >= 25) && (minutes < 30)) return "YYRYYOOOOOO";
-        else if ((minutes >= 30) && (minutes < 35)) return "YYRYYROOOOO";
-        else if ((minutes >= 35) && (minutes < 40)) return "YYRYYRYOOOO";
-        else if ((minutes >= 40) && (minutes < 45)) return "YYRYYRYYOOO";
-        else if ((minutes >= 45) && (minutes < 50)) return "YYRYYRYYROO";
-        else if ((minutes >= 50) && (minutes < 55)) return "YYRYYRYYRYO";
-        else return "YYRYYRYYRYY";
+    private int convertToQuarterTime(int minuteInt) {
+        return minuteInt - (minuteInt / 15) * 15;
+    }
+
+    private String middleLight(int timeQuarter) {
+        if (timeQuarter % 14 > 0) return "YYR";
+        else if (timeQuarter % 9 > 0) return "YYO";
+        else if (timeQuarter % 4 > 0) return "YOO";
+        else return "OOO";
+    }
+
+    private String initialLights(int numbersOfQuater) {
+        if(numbersOfQuater == 1) return "YYR";
+        else if(numbersOfQuater == 2) return "YYRYYR";
+        else return "YYRYYRYYR";
+    }
+
+    private String complementLights(int numbersOfQuarter) {
+        if(numbersOfQuarter == 0) return "OOOOOOOO";
+        else if(numbersOfQuarter == 1) return "OOOOO";
+        else return "OO";
     }
 
     public String convertSingleMinutes(String time) {
