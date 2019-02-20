@@ -83,29 +83,62 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void should_return_single_hours() {
+    public void should_return_single_hours_when_hrs_is_00() {
         //given
         final BerlinClock berlinClock = new BerlinClock();
         final String expectedLightMarker0Hrs = "OOOO";
-        final String expectedLightMarker2Hrs = "RROO";
-        final String expectedLightMarker3Hrs = "RRRO";
-        final String expectedLightMarker4Hrs = "RRRR";
         final int[] testTime1 = {0,0,0};
-        final int[] testTime2 = {23,59,59};
-        final int[] testTime3 = {2,4,0};
-        final int[] testTime4 = {8,23,0};
-        final int[] testTime5 = {14,35,0};
         //when
         final String actualSingleHrs0 = berlinClock.convertSingleHrs(testTime1);
-        final String actualSingleHrs1 = berlinClock.convertSingleHrs(testTime2);
-        final String actualSingleHrs2 = berlinClock.convertSingleHrs(testTime3);
-        final String actualSingleHrs3 = berlinClock.convertSingleHrs(testTime4);
-        final String actualSingleHrs4 = berlinClock.convertSingleHrs(testTime5);
         //then
         assertEquals(expectedLightMarker0Hrs, actualSingleHrs0);
+    }
+
+    @Test
+    public void should_return_single_hours_when_hrs_is_23() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker3Hrs = "RRRO";
+        final int[] testTime2 = {23,59,59};
+        //when
+        final String actualSingleHrs1 = berlinClock.convertSingleHrs(testTime2);
+        //then
         assertEquals(expectedLightMarker3Hrs, actualSingleHrs1);
+        }
+
+    @Test
+    public void should_return_single_hours_when_hrs_is_02() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker2Hrs = "RROO";
+        final int[] testTime3 = {2,4,0};
+        //when
+        final String actualSingleHrs2 = berlinClock.convertSingleHrs(testTime3);
+        //then
         assertEquals(expectedLightMarker2Hrs, actualSingleHrs2);
+        }
+
+    @Test
+    public void should_return_single_hours_when_hrs_is_08() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker3Hrs = "RRRO";
+        final int[] testTime4 = {8,23,0};
+        //when
+        final String actualSingleHrs3 = berlinClock.convertSingleHrs(testTime4);
+        //then
         assertEquals(expectedLightMarker3Hrs, actualSingleHrs3);
+    }
+
+    @Test
+    public void should_return_single_hours_when_hrs_is_14() {
+        //given
+        final BerlinClock berlinClock = new BerlinClock();
+        final String expectedLightMarker4Hrs = "RRRR";
+        final int[] testTime5 = {14,35,0};
+        //when
+        final String actualSingleHrs4 = berlinClock.convertSingleHrs(testTime5);
+        //then
         assertEquals(expectedLightMarker4Hrs, actualSingleHrs4);
     }
 
