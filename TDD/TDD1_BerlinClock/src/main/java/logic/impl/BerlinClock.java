@@ -7,20 +7,23 @@ public class BerlinClock implements Clock {
     public String convertTime(String time) {
         int timeInt[] = new int[3];
 
-        timeInt[0] = convertCharsToInt(time, 'h');
-        timeInt[1] = convertCharsToInt(time, 'm');
-        timeInt[2] = convertCharsToInt(time, 's');
+        timeInt = convertCharsToInt(time);
 
         return convertSeconds(timeInt) + convertFiveHrs(timeInt) + convertSingleHrs(timeInt) + conversionFiveMinutes(timeInt) + convertSingleMinutes(timeInt);
     }
 
-    private int convertCharsToInt(String time, char flag) {
+    private int[] convertCharsToInt(String time) {
         StringBuilder stringBuilder = new StringBuilder();
+        int timeCharPosition = 0;
+        int arrayInt[] = new int[3];
 
-        stringBuilder.append(time.charAt(first));
-        stringBuilder.append(time.charAt(second));
-
-        return Integer.parseInt(stringBuilder.toString());
+        for(int i = 0; i <= 2; i++) {
+            stringBuilder.append(time.charAt(timeCharPosition));
+            stringBuilder.append(time.charAt(timeCharPosition + 1));
+            arrayInt[i] = Integer.parseInt(stringBuilder.toString());
+            timeCharPosition += 3;
+        }
+        return arrayInt;
     }
 
     public String convertSeconds(int[] timeInt) {
