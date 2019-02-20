@@ -15,7 +15,7 @@ public class BerlinClock implements Clock {
         final String fiveHrs = convertFiveHrs(timeInt);
         final String singleHrs = convertSingleHrs(timeInt);
         final String fiveMinutes = conversionFiveMinutes(timeInt);
-        final String singleMinutes = convertSingleMinutes(time);
+        final String singleMinutes = convertSingleMinutes(timeInt);
 
         return seconds + fiveHrs + singleHrs + fiveMinutes + singleMinutes;
     }
@@ -45,14 +45,15 @@ public class BerlinClock implements Clock {
         int modulo = timeInt[0] % 5;
 
         if(modulo <= 0) return "OOOO";
-        else return convertIntToString(modulo);
+        else return convertIntToString(modulo,'H');
     }
 
-    private String convertIntToString(int modulo){
+    private String convertIntToString(int modulo, char flag){
         String light = "";
 
         for(int i = 1; i <= modulo; i++)
-            light += "R";
+            if(flag =='H') light += "R";
+            else light += "Y";
 
         while(light.length() < 4)
             light += "O";
@@ -90,15 +91,8 @@ public class BerlinClock implements Clock {
         else return "OO";
     }
 
-    public String convertSingleMinutes(String time) {
-
-        final String minutesString = Character.toString(time.charAt(4));
-        final int minutes = Integer.parseInt(minutesString);
-
-        if (minutes % 5 == 1) return "YOOO";
-        else if (minutes % 5 == 2) return "YYOO";
-        else if (minutes % 5 == 3) return "YYYO";
-        else if (minutes % 5 == 4) return "YYYY";
-        else return "OOOO";
+    public String convertSingleMinutes(int[] timeInt) {
+        int mod = timeInt[1] % 5;
+        return convertIntToString(mod, 'M');
     }
 }
