@@ -90,17 +90,17 @@ public class BerlinClockTest {
         final int[] testTime4 = {12,23,0};
         final int[] testTime5 = {12,35,0};
         //when
-        //final String actualFiveMinutes1 = berlinClock.conversionFiveMinutes(testTime1);
-        //final String actualFiveMinutes2 = berlinClock.conversionFiveMinutes(testTime2);
+        final String actualFiveMinutes1 = berlinClock.conversionFiveMinutes(testTime1);
+        final String actualFiveMinutes2 = berlinClock.conversionFiveMinutes(testTime2);
         final String actualFiveMinutes3 = berlinClock.conversionFiveMinutes(testTime3);
-        //final String actualFiveMinutes4 = berlinClock.conversionFiveMinutes(testTime4);
-        //final String actualFiveMinutes5 = berlinClock.conversionFiveMinutes(testTime5);
+        final String actualFiveMinutes4 = berlinClock.conversionFiveMinutes(testTime4);
+        final String actualFiveMinutes5 = berlinClock.conversionFiveMinutes(testTime5);
         //then
-        //assertEquals(expectedLightMarker0min, actualFiveMinutes1);
-        //assertEquals(expectedLightMarker55min, actualFiveMinutes2);
+        assertEquals(expectedLightMarker0min, actualFiveMinutes1);
+        assertEquals(expectedLightMarker55min, actualFiveMinutes2);
         assertEquals(expectedLightMarker0min, actualFiveMinutes3);
-        //assertEquals(expectedLightMarker20min, actualFiveMinutes4);
-        //assertEquals(expectedLightMarker35min, actualFiveMinutes5);
+        assertEquals(expectedLightMarker20min, actualFiveMinutes4);
+        assertEquals(expectedLightMarker35min, actualFiveMinutes5);
     }
 
     @Test
