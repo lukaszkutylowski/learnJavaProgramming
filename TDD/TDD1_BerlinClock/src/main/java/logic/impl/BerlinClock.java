@@ -3,9 +3,12 @@ package logic.impl;
 import logic.Clock;
 
 public class BerlinClock implements Clock {
+    public char yellow = 'Y';
+    public char red = 'R';
+    public char off = 'O';
 
     public String convertTime(String time) {
-        int timeInt[] = new int[3];
+        int timeInt[];
 
         timeInt = convertCharsToInt(time);
 
@@ -26,8 +29,8 @@ public class BerlinClock implements Clock {
         return arrayInt;
     }
 
-    public String convertSeconds(int[] timeInt) {
-        return timeInt[2] % 2 > 0 ? "O" : "Y";
+    public char convertSeconds(int[] timeInt) {
+        return timeInt[2] % 2 > 0 ? off : yellow;
     }
 
     public String convertFiveHrs(int[] timeInt) {
