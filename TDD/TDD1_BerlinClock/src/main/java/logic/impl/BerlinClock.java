@@ -36,25 +36,25 @@ public class BerlinClock implements Clock {
     public String convertFiveHrs(int[] timeInt) {
         String fiveHrsLight;
         int howMuch = 0;
-        if(timeInt[0] < 5) { fiveHrsLight = fiveHrsLightBulider(0); }
+
+        if(timeInt[0] < 5) { fiveHrsLight = fiveHrsLightBuilder(0); }
         else {
             int tempTime = 19;
             for(int i = 4; timeInt[0] % tempTime > 0; i--) {
                 tempTime -= 5;
                 howMuch = i;
             }
-            fiveHrsLight = fiveHrsLightBulider(howMuch);
+            fiveHrsLight = fiveHrsLightBuilder(howMuch);
         }
         return fiveHrsLight;
     }
 
-    private String fiveHrsLightBulider(int howMuchRed) {
+    private String fiveHrsLightBuilder(int howMuchRed) {
         String light = "";
 
         for(int i = 0; i <= howMuchRed; i++) {
             light += red;
         }
-
         while(light.length() < 4) {
             light += off;
         }
@@ -83,36 +83,21 @@ public class BerlinClock implements Clock {
     }
 
     public String conversionFiveMinutes(int[] timeInt) {
-        int timeQuarter = convertToQuarterTime(timeInt[1]);
-        int numbersOfQuarter = timeInt[1] / 15;
+        int howMuchYellow = timeInt[1] / 5;
 
-        return initialLights(numbersOfQuarter) + lastThreeLight(timeQuarter, numbersOfQuarter);
+        return fiveMinutesLightBulider(howMuchYellow);
     }
 
-    public int convertToQuarterTime(int minuteInt) {
-        return minuteInt - (minuteInt / 15) * 15;
-    }
+    private String fiveMinutesLightBulider(int howMuchYellow) {
+        String lightFiveMinutes = "";
 
-    private String lastThreeLight(int timeQuarter, int numbersOfQuarter) {
-        if((numbersOfQuarter == 0) && (timeQuarter < 5)) {
-            return "OO";
-        } else if(numbersOfQuarter < 3){
-            if(timeQuarter > 14) return "YYR";
-            else if(timeQuarter > 9) return "YYO";
-            else if(timeQuarter > 4) return "YOO";
-            else return "OO";
-        } else {
-            if(timeQuarter > 9) return "YY";
-            else if (timeQuarter > 4) return "YO";
-            else return "OO";
+        for(int i = 0; i < howMuchYellow; i++) {
+            if(i % 3 == 0) lightFiveMinutes += red;
+            else lightFiveMinutes += yellow;
         }
-    }
+        while(lightFiveMinutes.length() < 11) lightFiveMinutes += off;
 
-    private String initialLights(int numbersOfQuater) {
-        if(numbersOfQuater == 1) return "YYR";
-        else if(numbersOfQuater == 2) return "YYRYYR";
-        else if(numbersOfQuater == 3) return "YYRYYRYYR";
-        else return "OOOOOOOOO";
+        return lightFiveMinutes;
     }
 
     public String convertSingleMinutes(int[] timeInt) {
