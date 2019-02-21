@@ -15,7 +15,7 @@ public class BerlinClock implements Clock {
         return convertSeconds(timeInt) + convertFiveHrs(timeInt) + convertSingleHrs(timeInt) + convertFiveMinutes(timeInt) + convertSingleMinutes(timeInt);
     }
 
-    private int[] convertCharsToInt(String time) {
+    public int[] convertCharsToInt(String time) {
         StringBuilder stringBuilder = new StringBuilder();
         int timeCharPosition = 0;
         int arrayInt[] = new int[3];
@@ -24,6 +24,7 @@ public class BerlinClock implements Clock {
             stringBuilder.append(time.charAt(timeCharPosition));
             stringBuilder.append(time.charAt(timeCharPosition + 1));
             arrayInt[i] = Integer.parseInt(stringBuilder.toString());
+            stringBuilder.setLength(0);
             timeCharPosition += 3;
         }
         return arrayInt;
