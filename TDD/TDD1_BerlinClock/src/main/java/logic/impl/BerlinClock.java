@@ -3,9 +3,9 @@ package logic.impl;
 import logic.Clock;
 
 public class BerlinClock implements Clock {
-    public char yellow = 'Y';
-    public char red = 'R';
-    public char off = 'O';
+    public String yellow = "Y";
+    public String red = "R";
+    public String off = "O";
 
     public String convertTime(String time) {
         int timeInt[];
@@ -29,7 +29,7 @@ public class BerlinClock implements Clock {
         return arrayInt;
     }
 
-    public char convertSeconds(int[] timeInt) {
+    public String convertSeconds(int[] timeInt) {
         return timeInt[2] % 2 > 0 ? off : yellow;
     }
 
@@ -39,11 +39,14 @@ public class BerlinClock implements Clock {
 
         if(timeInt[0] < 5) { fiveHrsLight = fiveHrsLightBuilder(0); }
         else {
-            int tempTime = 19;
-            for(int i = 4; timeInt[0] % tempTime > 0; i--) {
-                tempTime -= 5;
-                howMuch = i;
+            int i = 0, tempTime = 4;
+
+            while(tempTime < timeInt[0]) {
+                i++;
+                tempTime += 5;
             }
+
+            howMuch = i;
             fiveHrsLight = fiveHrsLightBuilder(howMuch);
         }
         return fiveHrsLight;
@@ -52,7 +55,7 @@ public class BerlinClock implements Clock {
     private String fiveHrsLightBuilder(int howMuchRed) {
         String light = "";
 
-        for(int i = 0; i <= howMuchRed; i++) {
+        for(int i = 0; i < howMuchRed; i++) {
             light += red;
         }
         while(light.length() < 4) {
@@ -92,10 +95,10 @@ public class BerlinClock implements Clock {
         String lightFiveMinutes = "";
 
         for(int i = 0; i < howMuchYellow; i++) {
-            if(i % 3 == 0) lightFiveMinutes += red;
-            else lightFiveMinutes += yellow;
+            if((i % 3 == 0) && (i < 1)) lightFiveMinutes += red;
+            else lightFiveMinutes += yellow; //lightFiveMinutes.charAt(i) = red.charAt(0);
         }
-        while(lightFiveMinutes.length() < 11) lightFiveMinutes += off;
+        while(lightFiveMinutes.length() <= 11) lightFiveMinutes += off;
 
         return lightFiveMinutes;
     }
