@@ -12,7 +12,7 @@ public class BerlinClock implements Clock {
 
         timeInt = convertCharsToInt(time);
 
-        return convertSeconds(timeInt) + convertFiveHrs(timeInt) + convertSingleHrs(timeInt) + conversionFiveMinutes(timeInt) + convertSingleMinutes(timeInt);
+        return convertSeconds(timeInt) + convertFiveHrs(timeInt) + convertSingleHrs(timeInt) + convertFiveMinutes(timeInt) + convertSingleMinutes(timeInt);
     }
 
     private int[] convertCharsToInt(String time) {
@@ -85,7 +85,7 @@ public class BerlinClock implements Clock {
         return light;
     }
 
-    public String conversionFiveMinutes(int[] timeInt) {
+    public String convertFiveMinutes(int[] timeInt) {
         int howMuchYellow = timeInt[1] / 5;
 
         return fiveMinutesLightBulider(howMuchYellow);
@@ -94,11 +94,11 @@ public class BerlinClock implements Clock {
     private String fiveMinutesLightBulider(int howMuchYellow) {
         String lightFiveMinutes = "";
 
-        for(int i = 0; i < howMuchYellow; i++) {
-            if((i % 3 == 0) && (i < 1)) lightFiveMinutes += red;
+        for(int i = 1; i <= howMuchYellow; i++) {
+            if((i % 3 == 0) && (i > 1)) lightFiveMinutes += red;
             else lightFiveMinutes += yellow; //lightFiveMinutes.charAt(i) = red.charAt(0);
         }
-        while(lightFiveMinutes.length() <= 11) lightFiveMinutes += off;
+        while(lightFiveMinutes.length() < 11) lightFiveMinutes += off;
 
         return lightFiveMinutes;
     }
