@@ -149,19 +149,19 @@ public class BerlinClockTest {
         final String expectedLightMarker0min = "OOOOOOOOOOO";
         final int[] testTime1 = {0,0,0};
         //when
-        final String actualFiveMinutes1 = berlinClock.conversionFiveMinutes(testTime1);
+        final String actualFiveMinutes1 = berlinClock.convertFiveMinutes(testTime1);
         //then
         assertEquals(expectedLightMarker0min, actualFiveMinutes1);
     }
 
     @Test
-    public void should_return_five_min_is_59() {
+    public void should_return_five_minutes_when_min_is_59() {
         //given
         final BerlinClock berlinClock = new BerlinClock();
         final String expectedLightMarker55min = "YYRYYRYYRYY";
         final int[] testTime2 = {23,59,59};
         //when
-        final String actualFiveMinutes2 = berlinClock.conversionFiveMinutes(testTime2);
+        final String actualFiveMinutes2 = berlinClock.convertFiveMinutes(testTime2);
         //then
         assertEquals(expectedLightMarker55min, actualFiveMinutes2);
         }
@@ -173,7 +173,7 @@ public class BerlinClockTest {
         final String expectedLightMarker0min = "OOOOOOOOOOO";
         final int[] testTime3 = {12,4,0};
         //when
-        final String actualFiveMinutes3 = berlinClock.conversionFiveMinutes(testTime3);
+        final String actualFiveMinutes3 = berlinClock.convertFiveMinutes(testTime3);
         //then
         assertEquals(expectedLightMarker0min, actualFiveMinutes3);
     }
@@ -185,7 +185,7 @@ public class BerlinClockTest {
         final String expectedLightMarker20min = "YYRYOOOOOOO";
         final int[] testTime4 = {12,23,0};
         //when
-        final String actualFiveMinutes4 = berlinClock.conversionFiveMinutes(testTime4);
+        final String actualFiveMinutes4 = berlinClock.convertFiveMinutes(testTime4);
         //then
         assertEquals(expectedLightMarker20min, actualFiveMinutes4);
     }
@@ -197,7 +197,7 @@ public class BerlinClockTest {
         final String expectedLightMarker35min = "YYRYYRYOOOO";
         final int[] testTime5 = {12,35,0};
         //when
-        final String actualFiveMinutes5 = berlinClock.conversionFiveMinutes(testTime5);
+        final String actualFiveMinutes5 = berlinClock.convertFiveMinutes(testTime5);
         //then
         assertEquals(expectedLightMarker35min, actualFiveMinutes5);
     }
