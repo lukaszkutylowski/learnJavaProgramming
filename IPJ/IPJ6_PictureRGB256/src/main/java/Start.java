@@ -8,8 +8,8 @@ public class Start {
     public static void main(String[] args) {
         int[] RGB = new int[3];
         RGB[0] = 123;
-        RGB[1] = 23;
-        RGB[2] = 3;
+        RGB[1] = 12;
+        RGB[2] = 1;
 
         PictureRGB256 pic1 = new PictureRGB256();
         pic1.makePicture256pxl(RGB);
