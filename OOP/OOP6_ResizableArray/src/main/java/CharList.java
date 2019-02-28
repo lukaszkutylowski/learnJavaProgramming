@@ -1,14 +1,14 @@
 public interface CharList {
 
-    int save(char var1);
+    int save(char var);
 
-    char getByIndex(int var1);
+    char getByIndex(int var);
 
     char[] getAll();
 
-    char delete(int var1);
+    char delete(int var);
 
     int length();
 
-
+    int countChar(char var);
 }
