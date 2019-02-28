@@ -40,4 +40,17 @@ public class LukCharList implements CharList {
     public int length() {
         return this.array.length;
     }
+
+    public int countChar(char var) {
+        int numberOfChar = 0;
+
+        for(int i = 0; i < array.length; i++)
+        {
+            if(array[i] == var) {
+                numberOfChar++;
+            }
+        }
+
+        return numberOfChar;
+    }
 }
