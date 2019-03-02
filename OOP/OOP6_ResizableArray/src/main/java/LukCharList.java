@@ -70,4 +70,28 @@ public class LukCharList implements CharList {
 
         return numberOfChar;
     }
+
+    public int findFirst(char var) {
+        int charIndex = -1;
+
+        for(int i = 0; i < this.array.length ; i++) {
+            if(this.array[i] == var) {
+                charIndex = i;
+                i = this.array.length;
+            }
+        }
+        return charIndex;
+    }
+
+    public int findLast(char var) {
+        return 0;
+    }
+
+    public int[] findAllIndex(char var) {
+        return new int[0];
+    }
+
+    public int[] deleteKindOfChar(char val) {
+        return new int[0];
+    }
 }
