@@ -106,4 +106,18 @@ public class LukCharListTest {
         //when
         assertEquals(expectedIndex, actualIndex);
     }
+
+    @Test
+    public void should_find_all_indexes_for_given_char() {
+        //given
+        final int[] expectedIndexes = {0,2};
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('a');
+        lukCharList.save('b');
+        //then
+        final int[] actualIndexes = lukCharList.findAllIndex('a');
+        //when
+        assertArrayEquals(expectedIndexes, actualIndexes);
+    }
 }
