@@ -120,4 +120,18 @@ public class LukCharListTest {
         //when
         assertArrayEquals(expectedIndexes, actualIndexes);
     }
+
+    @Test
+    public void should_delete_all_given_char() {
+        //given
+        final int[] expectedIndexes = {0,2};
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('a');
+        lukCharList.save('b');
+        //then
+        final int[] actualIndexes = lukCharList.deleteKindOfChar('a');
+        //when
+        assertArrayEquals(expectedIndexes, actualIndexes);
+    }
 }
