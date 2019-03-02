@@ -6,7 +6,7 @@ public interface CharList {
 
     char[] getAll();
 
-    char delete(int var);
+    //char delete(int var);
 
     int length();
 
