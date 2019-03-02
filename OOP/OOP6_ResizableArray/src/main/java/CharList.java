@@ -18,5 +18,5 @@ public interface CharList {
 
     int[] findAllIndex(char var);
 
-    int[] deleteKindOfChar(char val);
+    int[] deleteKindOfChar(char var);
 }
