@@ -3,46 +3,49 @@ package logic.impl;
 import logic.Clock;
 
 public class BerlinClock implements Clock {
-    public String yellow = "Y";
-    public String red = "R";
-    public String off = "O";
+    public final String yellow = "Y";
+    public final String red = "R";
+    public final String off = "O";
+
+
+    public BerlinClock() {
+    }
 
     public String convertTime(String time) {
-        int timeInt[];
+        int[] timeInt = Converter.convertCharsToInt(time);
 
-        timeInt = convertCharsToInt(time);
-
-        return convertSeconds(timeInt) + convertFiveHrs(timeInt) + convertSingleHrs(timeInt) + convertFiveMinutes(timeInt) + convertSingleMinutes(timeInt);
+        return convertSeconds(timeInt[2])
+                + convertFiveHrs(timeInt[0])
+                + convertSingleHrs(timeInt[0])
+                + convertFiveMinutes(timeInt[1])
+                + convertSingleMinutes(timeInt[1]);
     }
 
-    public int[] convertCharsToInt(String time) {
-        StringBuilder stringBuilder = new StringBuilder();
-        int timeCharPosition = 0;
-        int arrayInt[] = new int[3];
-
-        for(int i = 0; i <= 2; i++) {
-            stringBuilder.append(time.charAt(timeCharPosition));
-            stringBuilder.append(time.charAt(timeCharPosition + 1));
-            arrayInt[i] = Integer.parseInt(stringBuilder.toString());
-            stringBuilder.setLength(0);
-            timeCharPosition += 3;
-        }
-        return arrayInt;
+    private String convertSeconds(int timeInt) {
+        return timeInt % 2 > 0 ? off : yellow;
     }
+//
+//    public String convertFiveHrs(int[] decHours) {
+//        String initialValue = "OOOO"; //TODO
+//
+//        for (int i = decHours[0] / 5; i > 0; i--) {
+//        initialValue.
+//        }
+//        return "OOOO";
+//    }
+//
+// }
 
-    public String convertSeconds(int[] timeInt) {
-        return timeInt[2] % 2 > 0 ? off : yellow;
-    }
-
-    public String convertFiveHrs(int[] timeInt) {
+    private String convertFiveHrs(int timeInt) {
         String fiveHrsLight;
         int howMuch = 0;
 
-        if(timeInt[0] < 5) { fiveHrsLight = fiveHrsLightBuilder(0); }
-        else {
+        if (timeInt < 5) {
+            fiveHrsLight = fiveHrsLightBuilder(0);
+        } else {
             int i = 0, tempTime = 4;
 
-            while(tempTime < timeInt[0]) {
+            while (tempTime < timeInt) {
                 i++;
                 tempTime += 5;
             }
@@ -56,56 +59,63 @@ public class BerlinClock implements Clock {
     private String fiveHrsLightBuilder(int howMuchRed) {
         String light = "";
 
-        for(int i = 0; i < howMuchRed; i++) {
+        for (int i = 0; i < howMuchRed; i++) {
             light += red;
         }
-        while(light.length() < 4) {
+        while (light.length() < 4) {
             light += off;
         }
 
         return light;
     }
 
-    public String convertSingleHrs(int[] timeInt) {
-        int modulo = timeInt[0] % 5;
-
-        if(modulo <= 0) return "OOOO";
-        else return convertIntToString(modulo,'H');
+    private String convertSingleHrs(int timeInt) {
+        int modulo = timeInt % 5; //todo nazwa
+            return convertIntToString(modulo, 'H');
     }
 
-    private String convertIntToString(int modulo, char flag){
-        String light = "";
+    private String convertIntToString(int modulo, char flag) {
+        StringBuilder light = new StringBuilder();
 
-        for(int i = 1; i <= modulo; i++)
-            if(flag =='H') light += "R";
-            else light += "Y";
+        for (int i = 1; i <= modulo; i++) {
+            if (flag == 'H') {
+                light.append("R");
+            } else {
+                light.append("Y");
+            }
+        }
 
-        while(light.length() < 4)
-            light += "O";
+        while (light.length() < 4)
+            light.append("O");
 
-        return light;
+        return light.toString();
     }
 
-    public String convertFiveMinutes(int[] timeInt) {
-        int howMuchYellow = timeInt[1] / 5;
+    private String convertFiveMinutes(int timeInt) {
+        int howMuchYellow = timeInt / 5;
 
         return fiveMinutesLightBulider(howMuchYellow);
     }
 
     private String fiveMinutesLightBulider(int howMuchYellow) {
-        String lightFiveMinutes = "";
+        StringBuilder lightFiveMinutes = new StringBuilder();
 
-        for(int i = 1; i <= howMuchYellow; i++) {
-            if((i % 3 == 0) && (i > 1)) lightFiveMinutes += red;
-            else lightFiveMinutes += yellow; //lightFiveMinutes.charAt(i) = red.charAt(0);
+        for (int i = 1; i <= howMuchYellow; i++) {
+            if ((i % 3 == 0) && (i > 1)) {
+                lightFiveMinutes.append(red);
+            } else {
+                lightFiveMinutes.append(yellow); //lightFiveMinutes.charAt(i) = red.charAt(0);
+            }
         }
-        while(lightFiveMinutes.length() < 11) lightFiveMinutes += off;
+        while (lightFiveMinutes.length() < 11) {
+            lightFiveMinutes.append(off);
+        }
 
-        return lightFiveMinutes;
+        return lightFiveMinutes.toString();
     }
 
-    public String convertSingleMinutes(int[] timeInt) {
-        int mod = timeInt[1] % 5;
+    private String convertSingleMinutes(int timeInt) {
+        int mod = timeInt % 5;
         return convertIntToString(mod, 'M');
     }
 }
