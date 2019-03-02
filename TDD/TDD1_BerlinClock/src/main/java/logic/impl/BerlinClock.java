@@ -26,19 +26,19 @@ public class BerlinClock implements Clock {
     }
 
     public String convertFiveHrs(int decHours) {
-          String initialValue = "OOOO"; //TODO
-          StringBuilder newValue = new StringBuilder(initialValue);
+        String initialValue = "OOOO"; //TODO
+        StringBuilder newValue = new StringBuilder(initialValue);
 
-          for (int i = decHours / 5; i > 0; i--) {
-              newValue.setCharAt(i - 1, 'R');
-          }
+        for (int i = decHours / 5; i > 0; i--) {
+            newValue.setCharAt(i - 1, 'R');
+        }
 
-          return newValue.toString();
-      }
+        return newValue.toString();
+    }
 
     public String convertSingleHrs(int timeInt) {
         int modulo = timeInt % 5; //todo nazwa
-            return convertIntToString(modulo, 'H');
+        return convertIntToString(modulo, 'H');
     }
 
     public String convertIntToString(int modulo, char flag) {
