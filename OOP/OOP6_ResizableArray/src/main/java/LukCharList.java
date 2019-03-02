@@ -96,7 +96,24 @@ public class LukCharList implements CharList {
     }
 
     public int[] findAllIndex(char var) {
-        return new int[0];
+        int numberOfIndexes = 0;
+        int[] temporaryArray = new int[this.array.length];
+        int j = 0;
+
+        for(int i = 0; i < this.array.length; i++) {
+            if (this.array[i] == var) {
+                numberOfIndexes++;
+                temporaryArray[j] = i;
+                j++;
+            }
+        }
+
+        int[] allIndexes = new int[numberOfIndexes];
+        for(int i = 0; i <= numberOfIndexes - 1; i++) {
+            allIndexes[i] = temporaryArray[i];
+        }
+
+            return allIndexes;
     }
 
     public int[] deleteKindOfChar(char val) {
