@@ -39,7 +39,7 @@ public class LukCharList implements CharList {
     }
 
     public char[] getAll() {
-        char[] charArray = new char[0];
+        char[] charArray = new char[this.array.length];
         for(int i = 0; i < this.array.length; i++){
             charArray[i] = array[i];
         }

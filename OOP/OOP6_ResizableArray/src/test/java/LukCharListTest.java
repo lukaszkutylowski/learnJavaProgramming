@@ -36,8 +36,9 @@ public class LukCharListTest {
     @Test
     public void should_check_all_array() {
         //given
-        lukCharList.save('5');
-        final char[] expectedCharArray = {'5'};
+        lukCharList.save('1');
+        lukCharList.save('2');
+        final char[] expectedCharArray = {'1','2'};
         //when
         final char[] actualCharArray = lukCharList.getAll();
         //then
