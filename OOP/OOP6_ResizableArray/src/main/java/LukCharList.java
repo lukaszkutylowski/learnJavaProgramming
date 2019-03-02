@@ -1,39 +1,56 @@
 public class LukCharList implements CharList {
 
-    char[] array = new char[0];
+    public char[] array = new char[0];
+    public char[] temporaryArray = new char[0];
 
     public LukCharList(){
     }
 
     public int save(char charToSave) {
-        char[] temporaryArray = this.array;
+        if(this.array.length > 0) {
+            temporaryArray = this.array;
+        }
         this.array = new char[this.array.length + 1];
-        this.rewrite(temporaryArray);
-        this.array[this.array.length - 1] = charToSave;
+        rewrite(temporaryArray);
+        array[this.array.length - 1] = charToSave;
         return this.array.length - 1;
     }
 
-    private void rewrite(char[] temporary) {
-        if(temporary.length < 0) {
+    private char[] rewrite(char[] temporary) {
+        if(temporary.length > 0) {
             for(int newLength = 0; newLength < temporary.length; newLength++) {
                 this.array[newLength] = temporary[newLength];
             }
         }
-    }
-
-    public char getByIndex(int var1) {
-        return this.array[var1];
-    }
-
-    public char[] getAll() {
         return this.array;
     }
 
+    private char[] rewriteDel(char[] temporary) {
+        if(temporary.length > 0) {
+            for(int newLength = 0; newLength < temporary.length - 1; newLength++) {
+                this.array[newLength] = temporary[newLength];
+            }
+        }
+        return this.array;
+    }
+
+    public char getByIndex(int index) {
+        return this.array[index];
+    }
+
+    public char[] getAll() {
+        char[] charArray = new char[0];
+        for(int i = 0; i < this.array.length; i++){
+            charArray[i] = array[i];
+        }
+        return charArray;
+    }
+
     public char delete(int indexDel) {
-        char[] temporaryArrayDel = this.array;
+        temporaryArray = this.array;
         char deletedChar = this.array[indexDel];
         this.array = new char[indexDel];
-        this.rewrite(temporaryArrayDel);
+        this.rewriteDel(temporaryArray);
         return deletedChar;
     }
 
