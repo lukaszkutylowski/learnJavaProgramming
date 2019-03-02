@@ -78,4 +78,18 @@ public class LukCharListTest {
         //then
         assertEquals(expectedNumber, actualNumber);
     }
+
+    @Test
+    public void should_check_finding_first_index_of_char() {
+        //given
+        final int expectedIndex = 1;
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        lukCharList.save('d');
+        //when
+        final int actualIndex = lukCharList.findFirst('b');
+        //then
+        assertEquals(expectedIndex, actualIndex);
+    }
 }
