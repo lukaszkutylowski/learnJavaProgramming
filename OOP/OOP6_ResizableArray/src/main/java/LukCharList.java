@@ -28,8 +28,8 @@ public class LukCharList implements CharList {
 
     private char[] rewriteDel(char[] temporary) {
         if(temporary.length > 0) {
-            for(int newLength = 0; newLength < temporary.length - 1; newLength++) {
-                this.array[newLength] = temporary[newLength];
+            for(int lenghtOldArray = 0; lenghtOldArray < temporary.length - 1; lenghtOldArray++) {
+                this.array[lenghtOldArray] = temporary[lenghtOldArray];
             }
         }
         return this.array;
