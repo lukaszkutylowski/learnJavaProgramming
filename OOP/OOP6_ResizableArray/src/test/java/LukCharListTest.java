@@ -80,31 +80,17 @@ public class LukCharListTest {
     }
 
     @Test
-    public void should_check_first_index_of_given_char() {
+    public void should_check_first_and_last_index_of_given_char() {
         //given
-        final int expectedIndex = 1;
-        lukCharList.save('a');
-        lukCharList.save('b');
+        final int[] expectedIndex = {-1,-1};
         lukCharList.save('c');
         lukCharList.save('d');
+        lukCharList.save('e');
+        lukCharList.save('f');
         //when
-        final int actualIndex = lukCharList.findFirst('b');
+        final int[] actualIndex = lukCharList.findFirstAndLast('b');
         //then
-        assertEquals(expectedIndex, actualIndex);
-    }
-
-    @Test
-    public void should_check_last_index_of_given_char() {
-        //given
-        final int expectedIndex = 2;
-        lukCharList.save('a');
-        lukCharList.save('b');
-        lukCharList.save('c');
-        lukCharList.save('d');
-        //then
-        final int actualIndex = lukCharList.findLast('c');
-        //when
-        assertEquals(expectedIndex, actualIndex);
+        assertArrayEquals(expectedIndex, actualIndex);
     }
 
     @Test
