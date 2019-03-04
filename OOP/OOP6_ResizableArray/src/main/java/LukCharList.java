@@ -20,11 +20,10 @@ public class LukCharList implements CharList {
 
     private void rewrite(char[] temporary) {
         if(temporary.length > 0) {
-            for(int newLength = 0; newLength < temporary.length; newLength++) {
+            for (int newLength = 0; newLength < temporary.length; newLength++) {
                 this.array[newLength] = temporary[newLength];
             }
         }
-        //return this.array;
     }
 
     private char[] rewriteDel(char[] temporary) {
@@ -41,11 +40,7 @@ public class LukCharList implements CharList {
     }
 
     public char[] getAll() {
-        char[] charArray = new char[this.array.length];
-        for(int i = 0; i < this.array.length; i++){
-            charArray[i] = array[i];
-        }
-        return charArray;
+        return this.array;
     }
 
     public char delete(int indexDel) {
