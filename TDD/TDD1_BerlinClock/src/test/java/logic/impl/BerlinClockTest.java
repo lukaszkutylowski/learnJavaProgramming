@@ -15,239 +15,248 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void should_return_convert_seconds() {
+    public void should_return_second_light() {
         //given
-        final String expectedLightMarkerEven = "Y";
-        final String expectedLightMarkerOdd = "O";
-        final int even = 0;
-        final int odd = 59;
+        final char expectedLightMarkerEven = 'Y';
+        final char expectedLightMarkerOdd = 'O';
+        final String testTimeEven = "11:37:10";
+        final String testTimeOdd = "11:37:11";
         //when
-        final String actualEven = berlinClock.convertSeconds(even);
-        final String actualOdd = berlinClock.convertSeconds(odd);
+        String actualStringEven = berlinClock.convertTime(testTimeEven);
+        String actualStringOdd = berlinClock.convertTime(testTimeOdd);
+        char actualMarkerEven = actualStringEven.charAt(0);
+        char actualMarkerOdd = actualStringOdd.charAt(0);
         //then
-        assertEquals(expectedLightMarkerEven, actualEven);
-        assertEquals(expectedLightMarkerOdd, actualOdd);
+        assertEquals(expectedLightMarkerEven,actualMarkerEven);
+        assertEquals(expectedLightMarkerOdd,actualMarkerOdd);
     }
 
     @Test
     public void should_return_five_hours_when_hr_is_00() {
         //given
-        final String expectedLightMarker0to4H = "OOOO";
-        final int testTime1 = 0;
+        final String expectedLightMarker0t04H = "OOOO";
+        final String testTime1 = "00:37:10";
         //when
-        final String actualFiveHrs0 = berlinClock.convertFiveHrs(testTime1);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(1,5);
         //then
-        assertEquals(expectedLightMarker0to4H, actualFiveHrs0);
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_hours_when_hr_is_23() {
         //given
-        final String expectedLightMarker20to23H = "RRRR";
-        final int testTime2 = 23;
+        final String expectedLightMarker0t04H = "RRRR";
+        final String testTime1 = "23:37:10";
         //when
-        final String actualFiveHrs1 = berlinClock.convertFiveHrs(testTime2);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(1,5);
         //then
-        assertEquals(expectedLightMarker20to23H, actualFiveHrs1);
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_hours_when_hr_is_02() {
         //given
-        final String expectedLightMarker0to4H = "OOOO";
-        final int testTime3 = 2;
+        final String expectedLightMarker0t04H = "OOOO";
+        final String testTime1 = "02:37:10";
         //when
-        final String actualFiveHrs2 = berlinClock.convertFiveHrs(testTime3);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(1,5);
         //then
-        assertEquals(expectedLightMarker0to4H, actualFiveHrs2);
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_hours_when_hr_is_08() {
         //given
-        final String expectedLightMarker5to9H = "ROOO";
-        final int testTime4 = 8;
+        final String expectedLightMarker0t04H = "ROOO";
+        final String testTime1 = "08:37:10";
         //when
-        final String actualFiveHrs3 = berlinClock.convertFiveHrs(testTime4);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(1,5);
         //then
-        assertEquals(expectedLightMarker5to9H, actualFiveHrs3);
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_hours_when_hr_is_16() {
         //given
-        final String expectedLightMarker15to19H = "RRRO";
-        final int testTime5 = 16;
+        final String expectedLightMarker0t04H = "RRRO";
+        final String testTime1 = "16:37:10";
         //when
-        final String actualFiveHrs4 = berlinClock.convertFiveHrs(testTime5);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(1,5);
         //then
-        assertEquals(expectedLightMarker15to19H, actualFiveHrs4);
-    }
-
-    @Test
-    public void should_return_single_hours_when_hr_is_00() {
-        //given
-        final String expectedLightMarker0Hrs = "OOOO";
-        final int testTime1 = 0;
-        //when
-        final String actualSingleHrs0 = berlinClock.convertSingleHrs(testTime1);
-        //then
-        assertEquals(expectedLightMarker0Hrs, actualSingleHrs0);
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
     }
 
     @Test
     public void should_return_single_hours_when_hr_is_23() {
         //given
-        final String expectedLightMarker3Hrs = "RRRO";
-        final int testTime2 = 23;
+        final String expectedLightMarker0t04H = "RRRO";
+        final String testTime1 = "23:37:10";
         //when
-        final String actualSingleHrs1 = berlinClock.convertSingleHrs(testTime2);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(5,9);
         //then
-        assertEquals(expectedLightMarker3Hrs, actualSingleHrs1);
-        }
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
+    }
 
     @Test
     public void should_return_single_hours_when_hr_is_02() {
         //given
-        final String expectedLightMarker2Hrs = "RROO";
-        final int testTime3 = 2;
+        final String expectedLightMarker0t04H = "RROO";
+        final String testTime1 = "02:37:10";
         //when
-        final String actualSingleHrs2 = berlinClock.convertSingleHrs(testTime3);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(5,9);
         //then
-        assertEquals(expectedLightMarker2Hrs, actualSingleHrs2);
-        }
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
+    }
 
     @Test
     public void should_return_single_hours_when_hr_is_08() {
         //given
-        final String expectedLightMarker3Hrs = "RRRO";
-        final int testTime4 = 8;
+        final String expectedLightMarker0t04H = "RRRO";
+        final String testTime1 = "08:37:10";
         //when
-        final String actualSingleHrs3 = berlinClock.convertSingleHrs(testTime4);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(5,9);
         //then
-        assertEquals(expectedLightMarker3Hrs, actualSingleHrs3);
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
     }
 
     @Test
     public void should_return_single_hours_when_hr_is_14() {
         //given
-        final String expectedLightMarker4Hrs = "RRRR";
-        final int testTime5 = 14;
+        final String expectedLightMarker0t04H = "RRRR";
+        final String testTime1 = "14:37:10";
         //when
-        final String actualSingleHrs4 = berlinClock.convertSingleHrs(testTime5);
+        String actualString1 = berlinClock.convertTime(testTime1);
+        String actualMarkerEven = actualString1.substring(5,9);
         //then
-        assertEquals(expectedLightMarker4Hrs, actualSingleHrs4);
+        assertEquals(expectedLightMarker0t04H,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_minutes_when_min_is_00() {
         //given
-        final String expectedLightMarker0min = "OOOOOOOOOOO";
-        final int testTime1 = 0;
+        final String expectedLightMarker = "OOOOOOOOOOO";
+        final String testTime = "23:00:10";
         //when
-        final String actualFiveMinutes1 = berlinClock.convertFiveMinutes(testTime1);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(9,20);
         //then
-        assertEquals(expectedLightMarker0min, actualFiveMinutes1);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_minutes_when_min_is_59() {
         //given
-        final String expectedLightMarker55min = "YYRYYRYYRYY";
-        final int testTime2 = 59;
+        final String expectedLightMarker = "YYRYYRYYRYY";
+        final String testTime = "23:59:10";
         //when
-        final String actualFiveMinutes2 = berlinClock.convertFiveMinutes(testTime2);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(9,20);
         //then
-        assertEquals(expectedLightMarker55min, actualFiveMinutes2);
-        }
+        assertEquals(expectedLightMarker,actualMarkerEven);
+    }
 
     @Test
     public void should_return_five_minutes_when_min_is_04() {
         //given
-        final String expectedLightMarker0min = "OOOOOOOOOOO";
-        final int testTime3 = 4;
+        final String expectedLightMarker = "OOOOOOOOOOO";
+        final String testTime = "23:04:10";
         //when
-        final String actualFiveMinutes3 = berlinClock.convertFiveMinutes(testTime3);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(9,20);
         //then
-        assertEquals(expectedLightMarker0min, actualFiveMinutes3);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_minutes_when_min_is_23() {
         //given
-        final String expectedLightMarker20min = "YYRYOOOOOOO";
-        final int testTime4 = 23;
+        final String expectedLightMarker = "YYRYOOOOOOO";
+        final String testTime = "23:23:10";
         //when
-        final String actualFiveMinutes4 = berlinClock.convertFiveMinutes(testTime4);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(9,20);
         //then
-        assertEquals(expectedLightMarker20min, actualFiveMinutes4);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_five_minutes_when_min_is_35() {
         //given
-        final String expectedLightMarker35min = "YYRYYRYOOOO";
-        final int testTime5 = 35;
+        final String expectedLightMarker = "YYRYYRYOOOO";
+        final String testTime = "23:35:10";
         //when
-        final String actualFiveMinutes5 = berlinClock.convertFiveMinutes(testTime5);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(9,20);
         //then
-        assertEquals(expectedLightMarker35min, actualFiveMinutes5);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_single_minutes_when_min_is_00() {
         //given
-        final String expectedLightMarker0min = "OOOO";
-        final int testTime1 = 0;
+        final String expectedLightMarker = "OOOO";
+        final String testTime = "23:00:10";
         //when
-        final String actualSingleMinutes1 = berlinClock.convertSingleMinutes(testTime1);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(20,24);
         //then
-        assertEquals(expectedLightMarker0min, actualSingleMinutes1);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_single_minutes_when_min_is_59() {
         //given
-        final String expectedLightMarker4min = "YYYY";
-        final int testTime2 = 59;
+        final String expectedLightMarker = "YYYY";
+        final String testTime = "23:59:10";
         //when
-        final String actualSingleMinutes2 = berlinClock.convertSingleMinutes(testTime2);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(20,24);
         //then
-        assertEquals(expectedLightMarker4min, actualSingleMinutes2);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_single_minutes_when_min_is_32() {
         //given
-        final String expectedLightMarker2min = "YYOO";
-        final int testTime3 = 32;
+        final String expectedLightMarker = "YYOO";
+        final String testTime = "23:32:10";
         //when
-        final String actualSingleMinutes3 = berlinClock.convertSingleMinutes(testTime3);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(20,24);
         //then
-        assertEquals(expectedLightMarker2min, actualSingleMinutes3);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_single_minutes_when_min_is_34() {
         //given
-        final String expectedLightMarker4min = "YYYY";
-        final int testTime4 = 34;
+        final String expectedLightMarker = "YYYY";
+        final String testTime = "23:34:10";
         //when
-        final String actualSingleMinutes4 = berlinClock.convertSingleMinutes(testTime4);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(20,24);
         //then
-        assertEquals(expectedLightMarker4min, actualSingleMinutes4);
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
     public void should_return_single_minutes_when_min_is_35() {
         //given
-        final String expectedLightMarker0min = "OOOO";
-        final int testTime5 = 35;
+        final String expectedLightMarker = "OOOO";
+        final String testTime = "23:35:10";
         //when
-        final String actualSingleMinutes5 = berlinClock.convertSingleMinutes(testTime5);
+        String actualString = berlinClock.convertTime(testTime);
+        String actualMarkerEven = actualString.substring(20,24);
         //then
-        assertEquals(expectedLightMarker0min, actualSingleMinutes5);
-
+        assertEquals(expectedLightMarker,actualMarkerEven);
     }
 
     @Test
