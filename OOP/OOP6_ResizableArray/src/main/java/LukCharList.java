@@ -1,9 +1,11 @@
 public class LukCharList implements CharList {
 
-    public char[] array = new char[0];
-    public char[] temporaryArray = new char[0];
+    private char[] array;
+    private char[] temporaryArray;
 
     public LukCharList(){
+        array = new char[0];
+        temporaryArray = new char[0];
     }
 
     public int save(char charToSave) {
