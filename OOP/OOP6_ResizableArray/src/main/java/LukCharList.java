@@ -68,19 +68,19 @@ public class LukCharList implements CharList {
         return numberOfChar;
     }
 
-    public int[] findFirstAndLast(char var) {
-        int[] charIndex = {-1, -1};
+    public int findFirstAndLast(char var) {
+        int charIndex = -1;
 
         for(int i = 0; i < this.array.length; i++) {
             if(this.array[i] == var) {
-                charIndex[0] = i;
+                charIndex = i;
                 i = this.array.length;
             }
         }
 
         for(int i = this.array.length; i > 0; i--) {
             if(this.array[i - 1] == var) {
-                charIndex[1] = i - 1;
+                charIndex = i - 1;
                 i = 0;
             }
         }

@@ -82,15 +82,18 @@ public class LukCharListTest {
     @Test
     public void should_check_first_and_last_index_of_given_char() {
         //given
-        final int[] expectedIndex = {-1,-1};
-        lukCharList.save('c');
+        final int expectedIndex1 = -1;
+        final int expectedIndex2 = 0;
+        lukCharList.save('b');
         lukCharList.save('d');
         lukCharList.save('e');
         lukCharList.save('f');
         //when
-        final int[] actualIndex = lukCharList.findFirstAndLast('b');
+        final int actualIndex1 = lukCharList.findFirstAndLast('a');
+        final int actualIndex2 = lukCharList.findFirstAndLast('b');
         //then
-        assertArrayEquals(expectedIndex, actualIndex);
+        assertEquals(expectedIndex1, actualIndex1);
+        assertEquals(expectedIndex2, actualIndex2);
     }
 
     @Test

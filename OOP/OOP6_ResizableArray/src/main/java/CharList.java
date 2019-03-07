@@ -12,7 +12,7 @@ public interface CharList {
 
     int countChar(char var);
 
-    int[] findFirstAndLast(char var);
+    int findFirstAndLast(char var);
 
     int[] findAllIndex(char var);
 
