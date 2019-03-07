@@ -14,7 +14,7 @@ public class BerlinClock implements Clock {
                 + processingFiveHrs(timeInt[0])
                 + processingSingleHrs(timeInt[0])
                 + processingFiveMinutes(timeInt[1])
-                + convertSingleMinutes(timeInt[1]);
+                + processingSingleMinutes(timeInt[1]);
     }
 
     private String processingSeconds(int secondsInt) {
@@ -37,8 +37,8 @@ public class BerlinClock implements Clock {
         return Converter.fiveMinutesLightBulider(howMuchYellow);
     }
 
-    private String convertSingleMinutes(int timeInt) {
-        int mod = timeInt % 5;
+    private String processingSingleMinutes(int minutesInt) {
+        int mod = minutesInt % 5;
         return Converter.convertIntToString(mod, 'M');
     }
 }
