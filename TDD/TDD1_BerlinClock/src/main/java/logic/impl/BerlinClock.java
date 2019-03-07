@@ -42,7 +42,8 @@ public class BerlinClock implements Clock {
 
     private String processingFiveMinutes(int minutesInt) {
         int howMuchYellow = minutesInt / 5;
-        return Converter.fiveMinutesLightBulider(howMuchYellow);
+        int howMuchYYR = howMuchYellow / 3;
+        return Converter.fiveMinutesLightBulider(howMuchYellow, howMuchYYR);
     }
 
     private String processingSingleMinutes(int minutesInt) {
