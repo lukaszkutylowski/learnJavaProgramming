@@ -12,7 +12,7 @@ public class BerlinClock implements Clock {
 
         return processingSeconds(timeInt[2])
                 + processingFiveHrs(timeInt[0])
-                + convertSingleHrs(timeInt[0])
+                + processingSingleHrs(timeInt[0])
                 + convertFiveMinutes(timeInt[1])
                 + convertSingleMinutes(timeInt[1]);
     }
@@ -27,8 +27,8 @@ public class BerlinClock implements Clock {
         return Converter.convertFiveHrs(howManyHrsLight);
     }
 
-    private static String convertSingleHrs(int timeInt) {
-        int multipleFiveHrs = timeInt % 5;
+    private String processingSingleHrs(int hoursInt) {
+        int multipleFiveHrs = hoursInt % 5;
         return Converter.convertIntToString(multipleFiveHrs, 'H');
     }
 
