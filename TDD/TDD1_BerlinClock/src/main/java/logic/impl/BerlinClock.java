@@ -11,15 +11,20 @@ public class BerlinClock implements Clock {
         int[] timeInt = Converter.convertCharsToInt(time);
 
         return processingSeconds(timeInt[2])
-                + Converter.convertFiveHrs(timeInt[0])
+                + processingFiveHrs(timeInt[0])
                 + convertSingleHrs(timeInt[0])
                 + convertFiveMinutes(timeInt[1])
                 + convertSingleMinutes(timeInt[1]);
     }
 
-    private String processingSeconds(int timeInt) {
-        int evenOrOdd = timeInt % 2 > 0 ? 1 : 0;
+    private String processingSeconds(int secondsInt) {
+        int evenOrOdd = secondsInt % 2 > 0 ? 1 : 0;
         return Converter.convertSeconds(evenOrOdd);
+    }
+
+    private String processingFiveHrs(int hoursInt) {
+        int howManyHrsLight = hoursInt / 5;
+        return Converter.convertFiveHrs(howManyHrsLight);
     }
 
     private static String convertSingleHrs(int timeInt) {

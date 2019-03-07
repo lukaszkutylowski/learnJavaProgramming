@@ -25,11 +25,11 @@ public class Converter {
         }
     }
 
-    public static String convertFiveHrs(int decHours) {
+    public static String convertFiveHrs(int hoursInt) {
         String initialValue = "OOOO";
         StringBuilder newValue = new StringBuilder(initialValue);
 
-        for (int i = decHours / 5; i > 0; i--) {
+        for (int i = hoursInt; i > 0; i--) {
             newValue.setCharAt(i - 1, 'R');
         }
 
