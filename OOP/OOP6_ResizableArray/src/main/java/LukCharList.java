@@ -74,14 +74,14 @@ public class LukCharList implements CharList {
         for(int i = 0; i < this.array.length; i++) {
             if(this.array[i] == var) {
                 charIndex = i;
-                i = this.array.length;
+                break;
             }
         }
 
         for(int i = this.array.length; i > 0; i--) {
             if(this.array[i - 1] == var) {
                 charIndex = i - 1;
-                i = 0;
+                break;
             }
         }
 
