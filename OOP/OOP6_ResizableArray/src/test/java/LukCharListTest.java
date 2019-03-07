@@ -104,9 +104,9 @@ public class LukCharListTest {
         lukCharList.save('b');
         lukCharList.save('a');
         lukCharList.save('b');
-        //then
-        final int[] actualIndexes = lukCharList.findAllIndex('a');
         //when
+        final int[] actualIndexes = lukCharList.findAllIndex('a');
+        //then
         assertArrayEquals(expectedIndexes, actualIndexes);
     }
 
@@ -118,9 +118,23 @@ public class LukCharListTest {
         lukCharList.save('b');
         lukCharList.save('a');
         lukCharList.save('b');
-        //then
-        final int[] actualIndexes = lukCharList.deleteKindOfChar('a');
         //when
+        final int[] actualIndexes = lukCharList.deleteKindOfChar('a');
+        //then
         assertArrayEquals(expectedIndexes, actualIndexes);
+    }
+
+    @Test
+    public void arrayToString() {
+        //given
+        final String expectedString = "[abcd]";
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        lukCharList.save('d');
+        //when
+        final String actualString = lukCharList.arrayToString();
+        //then
+        assertEquals(expectedString, actualString);
     }
 }

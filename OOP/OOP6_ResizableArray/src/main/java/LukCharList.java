@@ -136,4 +136,15 @@ public class LukCharList implements CharList {
 
         return allIndexes;
     }
+
+    public String arrayToString() {
+        String arrayToString = "[";
+
+        for(int i = 0; i < this.array.length; i++){
+            arrayToString += array[i];
+        }
+        arrayToString += "]";
+
+        return arrayToString;
+    }
 }
