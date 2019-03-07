@@ -10,11 +10,16 @@ public class BerlinClock implements Clock {
     public String convertTime(String time) {
         int[] timeInt = Converter.convertCharsToInt(time);
 
-        return Converter.convertSeconds(timeInt[2])
+        return processingSeconds(timeInt[2])
                 + Converter.convertFiveHrs(timeInt[0])
                 + convertSingleHrs(timeInt[0])
                 + convertFiveMinutes(timeInt[1])
                 + convertSingleMinutes(timeInt[1]);
+    }
+
+    private String processingSeconds(int timeInt) {
+        int evenOrOdd = timeInt % 2 > 0 ? 1 : 0;
+        return Converter.convertSeconds(evenOrOdd);
     }
 
     private static String convertSingleHrs(int timeInt) {
@@ -25,11 +30,29 @@ public class BerlinClock implements Clock {
     private String convertFiveMinutes(int timeInt) {
         int howMuchYellow = timeInt / 5;
 
-        return Converter.fiveMinutesLightBulider(howMuchYellow);
+        return fiveMinutesLightBulider(howMuchYellow);
     }
 
     private String convertSingleMinutes(int timeInt) {
         int mod = timeInt % 5;
         return Converter.convertIntToString(mod, 'M');
+    }
+
+    private static String fiveMinutesLightBulider(int howMuchYellow) {
+        final String  yellow = "Y", red = "R", off = "O";
+        StringBuilder lightFiveMinutes = new StringBuilder();
+
+        for (int i = 1; i <= howMuchYellow; i++) {
+            if ((i % 3 == 0) && (i > 1)) {
+                lightFiveMinutes.append(red);
+            } else {
+                lightFiveMinutes.append(yellow); //lightFiveMinutes.charAt(i) = red.charAt(0);
+            }
+        }
+        while (lightFiveMinutes.length() < 11) {
+            lightFiveMinutes.append(off);
+        }
+
+        return lightFiveMinutes.toString();
     }
 }

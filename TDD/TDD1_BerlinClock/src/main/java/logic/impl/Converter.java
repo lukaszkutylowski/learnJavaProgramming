@@ -17,9 +17,12 @@ public class Converter {
         return arrayInt;
     }
 
-    public static String convertSeconds(int timeInt) {
-        final String yellow = "Y", off = "O";
-        return timeInt % 2 > 0 ? off : yellow;
+    public static String convertSeconds(int evenOrOdd) {
+        if(evenOrOdd == 0) {
+            return "Y";
+        } else {
+            return "O";
+        }
     }
 
     public static String convertFiveHrs(int decHours) {
@@ -49,24 +52,4 @@ public class Converter {
 
         return light.toString();
     }
-
-    public static String fiveMinutesLightBulider(int howMuchYellow) {
-        final String  yellow = "Y", red = "R", off = "O";
-        StringBuilder lightFiveMinutes = new StringBuilder();
-
-        for (int i = 1; i <= howMuchYellow; i++) {
-            if ((i % 3 == 0) && (i > 1)) {
-                lightFiveMinutes.append(red);
-            } else {
-                lightFiveMinutes.append(yellow); //lightFiveMinutes.charAt(i) = red.charAt(0);
-            }
-        }
-        while (lightFiveMinutes.length() < 11) {
-            lightFiveMinutes.append(off);
-        }
-
-        return lightFiveMinutes.toString();
-    }
-
-
 }
