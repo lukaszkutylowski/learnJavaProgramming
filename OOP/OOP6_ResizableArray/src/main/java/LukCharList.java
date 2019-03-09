@@ -68,24 +68,15 @@ public class LukCharList implements CharList {
         return numberOfChar;
     }
 
-    public int findFirstAndLast(char var) {
-        int charIndex = -1;
+    public int findFirst(char letter) {
 
-        for(int i = 0; i < this.array.length; i++) {
-            if(this.array[i] == var) {
-                charIndex = i;
-                break;
+        for(int index = 0; index < this.length(); index++) {
+            if(this.array[index] == letter) {
+                return index;
             }
         }
 
-        for(int i = this.array.length; i > 0; i--) {
-            if(this.array[i - 1] == var) {
-                charIndex = i - 1;
-                break;
-            }
-        }
-
-        return charIndex;
+        return -1;
     }
 
     public int[] findAllIndex(char var) {
@@ -137,7 +128,8 @@ public class LukCharList implements CharList {
         return allIndexes;
     }
 
-    public String arrayToString() {
+    @Override
+    public String toString() {
         String arrayToString = "[";
 
         for(int i = 0; i < this.array.length; i++){
