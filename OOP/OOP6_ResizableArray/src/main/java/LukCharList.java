@@ -26,13 +26,21 @@ public class LukCharList implements CharList {
         }
     }
 
-    private char[] rewriteDel(char[] temporary) {
-        if(temporary.length > 0) {
-            for(int lenghtOldArray = 0; lenghtOldArray < temporary.length - 1; lenghtOldArray++) {
-                this.array[lenghtOldArray] = temporary[lenghtOldArray];
+    private char[] rewriteDel(char[] array, int indexOfDeleted) {
+        char[] temp = new char[this.length() - 1];
+        int arrayIndex = 0;
+
+        for(int index = 0; index < this.length() - 1; index++) {
+            if(index == indexOfDeleted) {
+                arrayIndex++;
+                temp[index] = array[arrayIndex];
+            } else {
+                temp[index] = array[arrayIndex];
             }
+            arrayIndex++;
         }
-        return this.array;
+
+        return temp;
     }
 
     public char getByIndex(int index) {
@@ -43,11 +51,10 @@ public class LukCharList implements CharList {
         return this.array;
     }
 
-    public char delete(int indexDel) {
+    public char delete(int indexOfDeleted) {
         temporaryArray = this.array;
-        char deletedChar = this.array[indexDel];
-        this.array = new char[indexDel];
-        this.rewriteDel(temporaryArray);
+        char deletedChar = this.getByIndex(indexOfDeleted);
+        array = rewriteDel(temporaryArray, indexOfDeleted);
         return deletedChar;
     }
 
@@ -69,13 +76,11 @@ public class LukCharList implements CharList {
     }
 
     public int findFirst(char letter) {
-
         for(int index = 0; index < this.length(); index++) {
             if(this.array[index] == letter) {
                 return index;
             }
         }
-
         return -1;
     }
 
