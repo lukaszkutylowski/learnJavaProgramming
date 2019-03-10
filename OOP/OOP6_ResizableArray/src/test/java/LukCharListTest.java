@@ -1,7 +1,7 @@
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class LukCharListTest {
 
@@ -89,8 +89,8 @@ public class LukCharListTest {
         lukCharList.save('e');
         lukCharList.save('f');
         //when
-        final int actualIndex1 = lukCharList.findFirstAndLast('a');
-        final int actualIndex2 = lukCharList.findFirstAndLast('b');
+        final int actualIndex1 = lukCharList.findFirst('a');
+        final int actualIndex2 = lukCharList.findFirst('b');
         //then
         assertEquals(expectedIndex1, actualIndex1);
         assertEquals(expectedIndex2, actualIndex2);
@@ -133,7 +133,7 @@ public class LukCharListTest {
         lukCharList.save('c');
         lukCharList.save('d');
         //when
-        final String actualString = lukCharList.arrayToString();
+        final String actualString = lukCharList.toString();
         //then
         assertEquals(expectedString, actualString);
     }

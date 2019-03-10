@@ -12,11 +12,11 @@ public interface CharList {
 
     int countChar(char var);
 
-    int findFirstAndLast(char var);
+    int findFirst(char var);
 
     int[] findAllIndex(char var);
 
     int[] deleteKindOfChar(char var);
 
-    String arrayToString();
+    String toString();
 }
