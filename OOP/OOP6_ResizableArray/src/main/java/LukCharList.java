@@ -77,9 +77,9 @@ public class LukCharList implements CharList {
     public int countChar(char letter) {
         int numberOfChar = 0;
 
-        for(int i = 0; i < array.length; i++)
+        for(int index = 0; index < array.length; index++)
         {
-            if(array[i] == letter) {
+            if(array[index] == letter) {
                 numberOfChar++;
             }
         }
