@@ -1,14 +1,13 @@
 public class LukCharList implements CharList {
 
     private char[] array;
-    private char[] temporaryArray;
 
     public LukCharList(){
         array = new char[0];
-        temporaryArray = new char[0];
     }
 
     public int save(char letter) {
+        char[] temporaryArray = new char[0];
         if(this.array.length > 0) {
             temporaryArray = this.array;
         }
@@ -52,6 +51,7 @@ public class LukCharList implements CharList {
     }
 
     public char delete(int index) {
+        char[] temporaryArray = new char[0];
         temporaryArray = this.array;
         char deletedChar = this.getByIndex(index);
         array = rewriteDel(temporaryArray, index);
