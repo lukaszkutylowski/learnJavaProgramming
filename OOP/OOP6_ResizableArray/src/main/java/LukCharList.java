@@ -63,7 +63,11 @@ public class LukCharList implements CharList {
     }
 
     public int length() {
-        return this.array.length;
+        try {
+            return array.length;
+        } catch (IllegalArgumentException exception) {
+            return 0;
+        }
     }
 
     public int countChar(char letter) {

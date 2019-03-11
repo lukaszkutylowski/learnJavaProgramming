@@ -84,6 +84,16 @@ public class LukCharListTest {
     }
 
     @Test
+    public void should_check_array_length_when_is_empty() {
+        //given
+        final int expectedInt = 0;
+        //when
+        final int actualInt = lukCharList.length();
+        //then
+        assertEquals(expectedInt, actualInt);
+    }
+
+    @Test
     public void should_check_counting_chars_in_array() {
         //given
         final int expectedNumber = 1;
