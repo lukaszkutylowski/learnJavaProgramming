@@ -8,13 +8,13 @@ public class LukCharList implements CharList {
         temporaryArray = new char[0];
     }
 
-    public int save(char charToSave) {
+    public int save(char letter) {
         if(this.array.length > 0) {
             temporaryArray = this.array;
         }
         this.array = new char[this.array.length + 1];
         rewrite(temporaryArray);
-        array[this.array.length - 1] = charToSave;
+        array[this.array.length - 1] = letter;
         return this.array.length - 1;
     }
 
@@ -51,10 +51,10 @@ public class LukCharList implements CharList {
         return this.array;
     }
 
-    public char delete(int indexOfDeleted) {
+    public char delete(int index) {
         temporaryArray = this.array;
-        char deletedChar = this.getByIndex(indexOfDeleted);
-        array = rewriteDel(temporaryArray, indexOfDeleted);
+        char deletedChar = this.getByIndex(index);
+        array = rewriteDel(temporaryArray, index);
         return deletedChar;
     }
 
@@ -62,12 +62,12 @@ public class LukCharList implements CharList {
         return this.array.length;
     }
 
-    public int countChar(char var) {
+    public int countChar(char letter) {
         int numberOfChar = 0;
 
         for(int i = 0; i < array.length; i++)
         {
-            if(array[i] == var) {
+            if(array[i] == letter) {
                 numberOfChar++;
             }
         }
@@ -84,13 +84,13 @@ public class LukCharList implements CharList {
         return -1;
     }
 
-    public int[] findAllIndex(char var) {
+    public int[] findAllIndex(char letter) {
         int numberOfIndexes = 0;
         int[] temporaryArray = new int[this.array.length];
         int j = 0;
 
         for(int i = 0; i < this.array.length; i++) {
-            if (this.array[i] == var) {
+            if (this.array[i] == letter) {
                 numberOfIndexes++;
                 temporaryArray[j] = i;
                 j++;
@@ -105,14 +105,14 @@ public class LukCharList implements CharList {
             return allIndexes;
     }
 
-    public int[] deleteKindOfChar(char var) {
+    public int[] deleteKindOfChar(char letter) {
         int numberOfIndexes = 0;
         char[] temporaryArray = new char[this.array.length];
         int[] temporaryCounter = new int[this.array.length];
         int j = 0;
 
         for(int i = 0; i < this.array.length; i++) {
-            if (this.array[i] == var) {
+            if (this.array[i] == letter) {
                 numberOfIndexes++;
                 temporaryCounter[j] = i;
                 j++;

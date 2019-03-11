@@ -1,22 +1,22 @@
 public interface CharList {
 
-    int save(char var);
+    int save(char letter);
 
-    char getByIndex(int var);
+    char getByIndex(int index);
 
     char[] getAll();
 
-    char delete(int var);
+    char delete(int index);
 
     int length();
 
-    int countChar(char var);
+    int countChar(char letter);
 
-    int findFirst(char var);
+    int findFirst(char letter);
 
-    int[] findAllIndex(char var);
+    int[] findAllIndex(char letter);
 
-    int[] deleteKindOfChar(char var);
+    int[] deleteKindOfChar(char letter);
 
     String toString();
 }
