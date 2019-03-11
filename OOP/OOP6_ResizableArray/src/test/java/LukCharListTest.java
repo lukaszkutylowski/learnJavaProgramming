@@ -15,18 +15,24 @@ public class LukCharListTest {
     @Test
     public void should_check_save_char() {
         //given
-        final int expectedIntPosition = 0;
+        final int expectedIntPosition0 = 0;
+        final int expectedIntPosition1 = 1;
+        final int expectedIntPosition2 = 2;
         //when
-        final int actualIntPosition = lukCharList.save('5');
+        final int actualIntPosition0 = lukCharList.save('a');
+        final int actualIntPosition1 = lukCharList.save('b');
+        final int actualIntPosition2 = lukCharList.save('a');
         //then
-        assertEquals(actualIntPosition,expectedIntPosition);
+        assertEquals(actualIntPosition0,expectedIntPosition0);
+        assertEquals(actualIntPosition1,expectedIntPosition1);
+        assertEquals(actualIntPosition2,expectedIntPosition2);
     }
 
     @Test
     public void should_check_index_value() {
         //given
-        lukCharList.save('5');
-        final char expectedChar = '5';
+        final char expectedChar = 'a';
+        lukCharList.save('a');
         //when
         final char actualChar = lukCharList.getByIndex(0);
         //then
