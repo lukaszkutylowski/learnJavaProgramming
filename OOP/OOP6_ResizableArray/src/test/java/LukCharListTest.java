@@ -64,12 +64,69 @@ public class LukCharListTest {
     @Test
     public void should_check_deleted_char() {
         //given
-        final char expectedChar = '5';
-        lukCharList.save('5');
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        final char[] expectedCharArray1 = {'b','c'};
+        final char[] expectedCharArray2 = {'c'};
+        final char[] expectedCharArray3 = {};
         //when
-        final char actualChar = lukCharList.delete(0);
+        lukCharList.delete(0);
+        final char[] actualCharArray1 = lukCharList.getAll();
+        lukCharList.delete(0);
+        final char[] actualCharArray2 = lukCharList.getAll();
+        lukCharList.delete(0);
+        final char[] actualCharArray3 = lukCharList.getAll();
         //then
-        assertEquals(expectedChar, actualChar);
+        assertArrayEquals(expectedCharArray1, actualCharArray1);
+        assertArrayEquals(expectedCharArray2, actualCharArray2);
+        assertArrayEquals(expectedCharArray3, actualCharArray3);
+    }
+
+    @Test
+    public void should_check_deleted_char_in_many_places() {
+        //given
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        lukCharList.save('d');
+        lukCharList.save('e');
+        lukCharList.save('f');
+        lukCharList.save('g');
+        lukCharList.save('h');
+        lukCharList.save('i');
+        lukCharList.save('j');
+        final char[] expectedCharArray1 = {'a','b','c','d','e','f','g','h','i'};
+        final char[] expectedCharArray2 = {'a','b','d','e','f','g','h','i'};
+        final char[] expectedCharArray3 = {'b','d','e','f','g','h','i'};
+        final char[] expectedCharArray4 = {'e','f','g','h','i'};
+        final char[] expectedCharArray5 = {'e','g'};
+        final char[] expectedCharArray6 = {};
+        //when
+        lukCharList.delete(9);
+        final char[] actualCharArray1 = lukCharList.getAll();
+        lukCharList.delete(2);
+        final char[] actualCharArray2 = lukCharList.getAll();
+        lukCharList.delete(0);
+        final char[] actualCharArray3 = lukCharList.getAll();
+        lukCharList.delete(0);
+        lukCharList.delete(0);
+        final char[] actualCharArray4 = lukCharList.getAll();
+        lukCharList.delete(lukCharList.length() - 1);
+        lukCharList.delete(lukCharList.length() - 1);
+        lukCharList.delete(1);
+        final char[] actualCharArray5 = lukCharList.getAll();
+        lukCharList.delete(lukCharList.length() - 1);
+        lukCharList.delete(lukCharList.length() - 1);
+        final char[] actualCharArray6 = lukCharList.getAll();
+
+        //then
+        assertArrayEquals(expectedCharArray1, actualCharArray1);
+        assertArrayEquals(expectedCharArray2, actualCharArray2);
+        assertArrayEquals(expectedCharArray3, actualCharArray3);
+        assertArrayEquals(expectedCharArray4, actualCharArray4);
+        assertArrayEquals(expectedCharArray5, actualCharArray5);
+        assertArrayEquals(expectedCharArray6, actualCharArray6);
     }
 
     @Test

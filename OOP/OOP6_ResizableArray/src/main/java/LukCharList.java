@@ -55,11 +55,15 @@ public class LukCharList implements CharList {
     }
 
     public char delete(int index) {
-        char[] temporaryArray;
-        temporaryArray = this.array;
-        char deletedChar = this.getByIndex(index);
-        array = rewriteDel(temporaryArray, index);
-        return deletedChar;
+        try {
+            char[] temporaryArray;
+            temporaryArray = array;
+            char deletedChar = this.getByIndex(index);
+            array = rewriteDel(temporaryArray, index);
+            return deletedChar;
+        } catch (IllegalArgumentException exception) {
+            return 0;
+        }
     }
 
     public int length() {
