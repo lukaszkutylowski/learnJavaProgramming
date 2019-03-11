@@ -31,8 +31,8 @@ public class LukCharListTest {
     @Test
     public void should_check_index_value() {
         //given
-        final char expectedChar = 'a';
         lukCharList.save('a');
+        final char expectedChar = 'a';
         //when
         final char actualChar = lukCharList.getByIndex(0);
         //then
@@ -45,6 +45,16 @@ public class LukCharListTest {
         lukCharList.save('1');
         lukCharList.save('2');
         final char[] expectedCharArray = {'1','2'};
+        //when
+        final char[] actualCharArray = lukCharList.getAll();
+        //then
+        assertArrayEquals(expectedCharArray, actualCharArray);
+    }
+
+    @Test
+    public void should_check_all_array_when_is_empty() {
+        //given
+        final char[] expectedCharArray = {};
         //when
         final char[] actualCharArray = lukCharList.getAll();
         //then

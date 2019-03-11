@@ -43,11 +43,15 @@ public class LukCharList implements CharList {
     }
 
     public char getByIndex(int index) {
-        return this.array[index];
+        try {
+            return array[index];
+        } catch (IllegalArgumentException exception) {
+            return 0;
+        }
     }
 
     public char[] getAll() {
-        return this.array;
+        return array;
     }
 
     public char delete(int index) {
