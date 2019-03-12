@@ -14,6 +14,8 @@ public interface CharList {
 
     int findFirst(char letter);
 
+    int findLast(char letter);
+
     int[] findAllIndex(char letter);
 
     int[] deleteKindOfChar(char letter);

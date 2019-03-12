@@ -96,6 +96,15 @@ public class LukCharList implements CharList {
         return -1;
     }
 
+    public int findLast(char letter) {
+        for(int index = this.length() - 1; index >= 0; index--) {
+            if(array[index] == letter) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
     public int[] findAllIndex(char letter) {
         int numberOfIndexes = 0;
         int[] temporaryArray = new int[this.array.length];

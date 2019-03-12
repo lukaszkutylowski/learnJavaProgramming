@@ -229,4 +229,25 @@ public class LukCharListTest {
         //then
         assertEquals(expectedString, actualString);
     }
+
+    @Test
+    public void should_check_last_index_of_given_char() {
+        //given
+        final int expectedIndex1 = 4;
+        final int expectedIndex2 = -1;
+        final int expectedIndex3 = 2;
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        lukCharList.save('d');
+        lukCharList.save('a');
+        //when
+        final int actualIndex1 = lukCharList.findLast('a');
+        final int actualIndex2 = lukCharList.findLast('e');
+        final int actualIndex3 = lukCharList.findLast('c');
+        //then
+        assertEquals(expectedIndex1, actualIndex1);
+        assertEquals(expectedIndex2, actualIndex2);
+        assertEquals(expectedIndex3, actualIndex3);
+    }
 }
