@@ -153,30 +153,39 @@ public class LukCharListTest {
     @Test
     public void should_check_counting_chars_in_array() {
         //given
-        final int expectedNumber = 1;
+        final int expectedNumber1 = 2;
+        final int expectedNumber2 = 0;
+        lukCharList.save('!');
+        lukCharList.save('?');
         lukCharList.save('!');
         lukCharList.save('?');
         //when
-        final int actualNumber = lukCharList.countChar('!');
+        final int actualNumber1 = lukCharList.countChar('!');
+        final int actualNumber2 = lukCharList.countChar('$');
         //then
-        assertEquals(expectedNumber, actualNumber);
+        assertEquals(expectedNumber1, actualNumber1);
+        assertEquals(expectedNumber2, actualNumber2);
     }
 
     @Test
-    public void should_check_first_and_last_index_of_given_char() {
+    public void should_check_first_index_of_given_char() {
         //given
-        final int expectedIndex1 = -1;
-        final int expectedIndex2 = 0;
+        final int expectedIndex1 = 0;
+        final int expectedIndex2 = -1;
+        final int expectedIndex3 = 0;
+        lukCharList.save('a');
         lukCharList.save('b');
+        lukCharList.save('c');
         lukCharList.save('d');
-        lukCharList.save('e');
-        lukCharList.save('f');
+        lukCharList.save('a');
         //when
         final int actualIndex1 = lukCharList.findFirst('a');
-        final int actualIndex2 = lukCharList.findFirst('b');
+        final int actualIndex2 = lukCharList.findFirst('e');
+        final int actualIndex3 = lukCharList.findFirst('a');
         //then
         assertEquals(expectedIndex1, actualIndex1);
         assertEquals(expectedIndex2, actualIndex2);
+        assertEquals(expectedIndex3, actualIndex3);
     }
 
     @Test

@@ -89,7 +89,7 @@ public class LukCharList implements CharList {
 
     public int findFirst(char letter) {
         for(int index = 0; index < this.length(); index++) {
-            if(this.array[index] == letter) {
+            if(array[index] == letter) {
                 return index;
             }
         }
