@@ -1,28 +1,24 @@
 public class LukCharList implements CharList {
 
-    private char[] array;
+    private char[] array;//this name could be sth like "body"
 
     public LukCharList(){
         array = new char[0];
     }
 
     public int save(char letter) {
-        char[] temporaryArray = new char[0];
-        if(array.length > 0) {
-            temporaryArray = array;
-        }
-        array = new char[array.length + 1];
-        rewrite(temporaryArray);
+        this.array = rewrite(array, new char[this.length() + 1]);
         array[array.length - 1] = letter;
         return array.length - 1;
     }
 
-    private void rewrite(char[] temporaryArray) {
-        if(temporaryArray.length > 0) {
-            for (int index = 0; index < temporaryArray.length; index++) {
-                array[index] = temporaryArray[index];
+    private char[] rewrite(char[] original, char[] copy) {
+        if(original.length > 0) {
+            for (int index = 0; index < original.length; index++) {
+                copy[index] = original[index];
             }
         }
+        return copy;
     }
 
     private char[] rewriteDel(char[] array, int indexOfDeleted) {
@@ -55,9 +51,8 @@ public class LukCharList implements CharList {
     }
 
     public char delete(int index) {
-        try {
-            char[] temporaryArray;
-            temporaryArray = array;
+        try {//todo remove try/catch blocks (everywhere)
+            char[] temporaryArray = rewrite(array, new char[this.length()]);
             char deletedChar = this.getByIndex(index);
             array = rewriteDel(temporaryArray, index);
             return deletedChar;
