@@ -412,64 +412,43 @@ public class LukCharListTest {
         assertEquals(expectedStringWithoutA, actualStringWithoutA);
     }
 
-    /*@Test
-    public void should_check_deleted_char_in_many_places() {
-        //given
-        lukCharList.save('a');
-        lukCharList.save('b');
-        lukCharList.save('c');
-        lukCharList.save('d');
-        lukCharList.save('e');
-        lukCharList.save('f');
-        lukCharList.save('g');
-        lukCharList.save('h');
-        lukCharList.save('i');
-        lukCharList.save('j');
-        final char[] expectedCharArray1 = {'a','b','c','d','e','f','g','h','i'};
-        final char[] expectedCharArray2 = {'a','b','d','e','f','g','h','i'};
-        final char[] expectedCharArray3 = {'b','d','e','f','g','h','i'};
-        final char[] expectedCharArray4 = {'e','f','g','h','i'};
-        final char[] expectedCharArray5 = {'e','g'};
-        final char[] expectedCharArray6 = {};
-        //when
-        lukCharList.delete(9);
-        final char[] actualCharArray1 = lukCharList.getAll();
-        lukCharList.delete(2);
-        final char[] actualCharArray2 = lukCharList.getAll();
-        lukCharList.delete(0);
-        final char[] actualCharArray3 = lukCharList.getAll();
-        lukCharList.delete(0);
-        lukCharList.delete(0);
-        final char[] actualCharArray4 = lukCharList.getAll();
-        lukCharList.delete(lukCharList.length() - 1);
-        lukCharList.delete(lukCharList.length() - 1);
-        lukCharList.delete(1);
-        final char[] actualCharArray5 = lukCharList.getAll();
-        lukCharList.delete(lukCharList.length() - 1);
-        lukCharList.delete(lukCharList.length() - 1);
-        final char[] actualCharArray6 = lukCharList.getAll();
-
-        //then
-        assertArrayEquals(expectedCharArray1, actualCharArray1);
-        assertArrayEquals(expectedCharArray2, actualCharArray2);
-        assertArrayEquals(expectedCharArray3, actualCharArray3);
-        assertArrayEquals(expectedCharArray4, actualCharArray4);
-        assertArrayEquals(expectedCharArray5, actualCharArray5);
-        assertArrayEquals(expectedCharArray6, actualCharArray6);
-    }*/
-
     @Test
     public void should_convert_char_array_to_string() {
         //given
-        final String expectedString = "[a,b,c,d]";
+        final int commas = 3;
+        final int squareBrackets = 2;
+        final int expectedStringLength1 = 1 + 0 + squareBrackets;
+        final int expectedStringLength2 = 4 + commas + squareBrackets;
+        final String expectedString1 = "[a]";
+        final String expectedString2 = "[a,b,c,d]";
+        //when
         lukCharList.save('a');
+        final int actualStringLength1 = lukCharList.toString().length();
+        final String actualString1 = lukCharList.toString();
         lukCharList.save('b');
         lukCharList.save('c');
         lukCharList.save('d');
+        final int actualStringLength2 = lukCharList.toString().length();
+        final String actualString2 = lukCharList.toString();
+        //then
+        assertEquals(expectedStringLength1, actualStringLength1);
+        assertEquals(expectedString1, actualString1);
+        assertEquals(expectedStringLength2, actualStringLength2);
+        assertEquals(expectedString2, actualString2);
+    }
+
+    @Test
+    public void should_convert_char_array_to_string_when_is_empty() {
+        //given
+        final int commas = 0;
+        final int squareBrackets = 2;
+        final int expectedStringLength = 0 + commas + squareBrackets;
+        final String expectedString = "[]";
         //when
+        final int actualStringLength = lukCharList.toString().length();
         final String actualString = lukCharList.toString();
         //then
-        System.out.println(lukCharList.getClass());
+        assertEquals(expectedStringLength, actualStringLength);
         assertEquals(expectedString, actualString);
     }
 
