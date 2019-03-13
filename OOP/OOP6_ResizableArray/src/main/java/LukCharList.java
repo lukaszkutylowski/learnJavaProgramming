@@ -115,6 +115,9 @@ public class LukCharList implements CharList {
 
         for (int index = 0; index <= indexes.length - 1; index++) {
             this.delete(indexes[index]);
+            if(index < indexes.length - 1) {
+                indexes[index + 1] -= 1;
+            }
         }
 
         return indexes;
