@@ -114,17 +114,34 @@ public class LukCharListTest {
         final char[] expectedCharArray1 = {'b','c'};
         final char[] expectedCharArray2 = {'c'};
         final char[] expectedCharArray3 = {};
+        final int expectedLength1 = 2;
+        final int expectedLength2 = 1;
+        final int expectedLength3 = 0;
+        final char expectedCharB = 'b';
+        final char expectedCharC = 'c';
         //when
         lukCharList.delete(0);
         final char[] actualCharArray1 = lukCharList.getAll();
+        final int actualLength1 = lukCharList.getAll().length;
+        final char actualChar1 = lukCharList.getByIndex(0);
+        final char actualChar2 = lukCharList.getByIndex(1);
         lukCharList.delete(0);
         final char[] actualCharArray2 = lukCharList.getAll();
+        final int actualLength2 = lukCharList.getAll().length;
+        final char actualChar3 = lukCharList.getByIndex(0);
         lukCharList.delete(0);
         final char[] actualCharArray3 = lukCharList.getAll();
+        final int actualLength3 = lukCharList.getAll().length;
         //then
         assertArrayEquals(expectedCharArray1, actualCharArray1);
         assertArrayEquals(expectedCharArray2, actualCharArray2);
         assertArrayEquals(expectedCharArray3, actualCharArray3);
+        assertEquals(expectedLength1, actualLength1);
+        assertEquals(expectedLength2, actualLength2);
+        assertEquals(expectedLength3, actualLength3);
+        assertEquals(expectedCharB, actualChar1);
+        assertEquals(expectedCharC, actualChar2);
+        assertEquals(expectedCharC, actualChar3);
     }
 
     @Test
