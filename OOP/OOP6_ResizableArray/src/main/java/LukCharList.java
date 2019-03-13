@@ -128,7 +128,9 @@ public class LukCharList implements CharList {
             arrayAsString += this.getByIndex(index) + ",";
         }
         int lastIndex = arrayAsString.length() - 1;
-        arrayAsString = arrayAsString.substring(0, lastIndex);
+        if(arrayAsString.length() > 1) {
+            arrayAsString = arrayAsString.substring(0, lastIndex);
+        }
         arrayAsString += "]";
 
         return arrayAsString;
