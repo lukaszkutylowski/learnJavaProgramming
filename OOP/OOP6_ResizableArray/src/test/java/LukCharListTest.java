@@ -76,13 +76,23 @@ public class LukCharListTest {
     @Test
     public void should_check_all_array() {
         //given
-        lukCharList.save('1');
-        lukCharList.save('2');
-        final char[] expectedCharArray = {'1','2'};
+        lukCharList.save('q');
+        lukCharList.save('w');
+        lukCharList.save('e');
+        lukCharList.save('r');
+        lukCharList.save('t');
+        lukCharList.save('y');
+        final char[] expectedCharArray = {'q','w','e','r','t','y'};
+        final String expectedString = "[q,w,e,r,t,y]";
+        final int expectedLength = 6;
         //when
         final char[] actualCharArray = lukCharList.getAll();
+        final String actualString = lukCharList.toString();
+        final int actualLength = lukCharList.getAll().length;
         //then
         assertArrayEquals(expectedCharArray, actualCharArray);
+        assertEquals(expectedString, actualString);
+        assertEquals(expectedLength, actualLength);
     }
 
     @Test
