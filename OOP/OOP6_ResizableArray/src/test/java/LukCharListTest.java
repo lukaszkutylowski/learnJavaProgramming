@@ -1,6 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class LukCharListTest {
@@ -219,7 +222,7 @@ public class LukCharListTest {
     @Test
     public void arrayToString() {
         //given
-        final String expectedString = "[abcd]";
+        final String expectedString = "[a,b,c,d]";
         lukCharList.save('a');
         lukCharList.save('b');
         lukCharList.save('c');
@@ -227,6 +230,7 @@ public class LukCharListTest {
         //when
         final String actualString = lukCharList.toString();
         //then
+        System.out.println(lukCharList.getClass());
         assertEquals(expectedString, actualString);
     }
 
@@ -249,5 +253,12 @@ public class LukCharListTest {
         assertEquals(expectedIndex1, actualIndex1);
         assertEquals(expectedIndex2, actualIndex2);
         assertEquals(expectedIndex3, actualIndex3);
+    }
+
+    @Test
+    public void should_check_equals() {
+        LukCharList lukCharList1 = new LukCharList();
+
+        assertFalse(lukCharList.equals(new String("sfe")));
     }
 }
