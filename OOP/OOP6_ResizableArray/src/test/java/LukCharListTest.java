@@ -318,20 +318,148 @@ public class LukCharListTest {
 
     @Test
     public void should_delete_all_given_char() {
-        //given
-        final int[] expectedIndexes = {0,2};
+        //givengi
         lukCharList.save('a');
         lukCharList.save('b');
+        lukCharList.save('r');
+        lukCharList.save('a');
+        lukCharList.save('k');
+        lukCharList.save('a');
+        lukCharList.save('d');
         lukCharList.save('a');
         lukCharList.save('b');
+        lukCharList.save('r');
+        lukCharList.save('a');
+        final int[] expectedDeletedIndex1 = {4};
+        final char[] expectedCharArrayWithoutK = {'a','b','r','a','a','d','a','b','r','a'};
+        final int expectedArrayLengthWithoutK = 10;
+        final String expectedStringWithoutK = "[a,b,r,a,a,d,a,b,r,a]";
+
+        final int[] expectedDeletedIndex2 = {5};
+        final char[] expectedCharArrayWithoutD = {'a','b','r','a','a','a','b','r','a'};
+        final int expectedArrayLengthWithoutD = 9;
+        final String expectedStringWithoutD = "[a,b,r,a,a,a,b,r,a]";
+
+        final int[] expectedDeletedIndex3 = {1,6};
+        final char[] expectedCharArrayWithoutB = {'a','r','a','a','a','r','a'};
+        final int expectedArrayLengthWithoutB = 7;
+        final String expectedStringWithoutB = "[a,r,a,a,a,r,a]";
+
+        final int[] expectedDeletedIndex4 = {1,5};
+        final char[] expectedCharArrayWithoutR = {'a','a','a','a','a'};
+        final int expectedArrayLengthWithoutR = 5;
+        final String expectedStringWithoutR = "[a,a,a,a,a]";
+
+        final int[] expectedDeletedIndex5 = {0,1,2,3,4};
+        final char[] expectedCharArrayWithoutA = {};
+        final int expectedArrayLengthWithoutA = 0;
+        final String expectedStringWithoutA = "[]";
         //when
-        final int[] actualIndexes = lukCharList.deleteKindOfChar('a');
+        System.out.println(lukCharList.toString());
+        final int[] actualDeletedIndex1 = lukCharList.deleteKindOfChar('k');
+        System.out.println(lukCharList.toString());
+        final char[] actualCharArrayWithoutK = lukCharList.getAll();
+        final int actualArrayLengthWithoutK = lukCharList.length();
+        final String actualStringWithoutK = lukCharList.toString();
+
+        final int[] actualDeletedIndex2 = lukCharList.deleteKindOfChar('d');
+        System.out.println(lukCharList.toString());
+        final char[] actualCharArrayWithoutD = lukCharList.getAll();
+        final int actualArrayLengthWithoutD = lukCharList.length();
+        final String actualStringWithoutD = lukCharList.toString();
+
+        final int[] actualDeletedIndex3 = lukCharList.deleteKindOfChar('b');
+        System.out.println(lukCharList.toString());
+        final char[] actualCharArrayWithoutB = lukCharList.getAll();
+        final int actualArrayLengthWithoutB = lukCharList.length();
+        final String actualStringWithoutB = lukCharList.toString();
+
+        final int[] actualDeletedIndex4 = lukCharList.deleteKindOfChar('r');
+        System.out.println(lukCharList.toString());
+        final char[] actualCharArrayWithoutR = lukCharList.getAll();
+        final int actualArrayLengthWithoutR = lukCharList.length();
+        final String actualStringWithoutR = lukCharList.toString();
+
+        final int[] actualDeletedIndex5 = lukCharList.deleteKindOfChar('a');
+        System.out.println(lukCharList.toString());
+        final char[] actualCharArrayWithoutA = lukCharList.getAll();
+        final int actualArrayLengthWithoutA = lukCharList.length();
+        final String actualStringWithoutA = lukCharList.toString();
         //then
-        assertArrayEquals(expectedIndexes, actualIndexes);
+        assertArrayEquals(expectedDeletedIndex1, actualDeletedIndex1);
+        assertEquals(expectedArrayLengthWithoutK, actualArrayLengthWithoutK);
+        assertArrayEquals(expectedCharArrayWithoutK, actualCharArrayWithoutK);
+        assertEquals(expectedStringWithoutK, actualStringWithoutK);
+
+        assertArrayEquals(expectedDeletedIndex2, actualDeletedIndex2);
+        assertEquals(expectedArrayLengthWithoutD, actualArrayLengthWithoutD);
+        assertArrayEquals(expectedCharArrayWithoutD, actualCharArrayWithoutD);
+        assertEquals(expectedStringWithoutD, actualStringWithoutD);
+
+        assertArrayEquals(expectedDeletedIndex3, actualDeletedIndex3);
+        assertEquals(expectedArrayLengthWithoutB, actualArrayLengthWithoutB);
+        assertArrayEquals(expectedCharArrayWithoutB, actualCharArrayWithoutB);
+        assertEquals(expectedStringWithoutB, actualStringWithoutB);
+
+        assertArrayEquals(expectedDeletedIndex4, actualDeletedIndex4);
+        assertEquals(expectedArrayLengthWithoutR, actualArrayLengthWithoutR);
+        assertArrayEquals(expectedCharArrayWithoutR, actualCharArrayWithoutR);
+        assertEquals(expectedStringWithoutR, actualStringWithoutR);
+
+        assertArrayEquals(expectedDeletedIndex5, actualDeletedIndex5);
+        assertEquals(expectedArrayLengthWithoutA, actualArrayLengthWithoutA);
+        assertArrayEquals(expectedCharArrayWithoutA, actualCharArrayWithoutA);
+        assertEquals(expectedStringWithoutA, actualStringWithoutA);
     }
 
+    /*@Test
+    public void should_check_deleted_char_in_many_places() {
+        //given
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        lukCharList.save('d');
+        lukCharList.save('e');
+        lukCharList.save('f');
+        lukCharList.save('g');
+        lukCharList.save('h');
+        lukCharList.save('i');
+        lukCharList.save('j');
+        final char[] expectedCharArray1 = {'a','b','c','d','e','f','g','h','i'};
+        final char[] expectedCharArray2 = {'a','b','d','e','f','g','h','i'};
+        final char[] expectedCharArray3 = {'b','d','e','f','g','h','i'};
+        final char[] expectedCharArray4 = {'e','f','g','h','i'};
+        final char[] expectedCharArray5 = {'e','g'};
+        final char[] expectedCharArray6 = {};
+        //when
+        lukCharList.delete(9);
+        final char[] actualCharArray1 = lukCharList.getAll();
+        lukCharList.delete(2);
+        final char[] actualCharArray2 = lukCharList.getAll();
+        lukCharList.delete(0);
+        final char[] actualCharArray3 = lukCharList.getAll();
+        lukCharList.delete(0);
+        lukCharList.delete(0);
+        final char[] actualCharArray4 = lukCharList.getAll();
+        lukCharList.delete(lukCharList.length() - 1);
+        lukCharList.delete(lukCharList.length() - 1);
+        lukCharList.delete(1);
+        final char[] actualCharArray5 = lukCharList.getAll();
+        lukCharList.delete(lukCharList.length() - 1);
+        lukCharList.delete(lukCharList.length() - 1);
+        final char[] actualCharArray6 = lukCharList.getAll();
+
+        //then
+        assertArrayEquals(expectedCharArray1, actualCharArray1);
+        assertArrayEquals(expectedCharArray2, actualCharArray2);
+        assertArrayEquals(expectedCharArray3, actualCharArray3);
+        assertArrayEquals(expectedCharArray4, actualCharArray4);
+        assertArrayEquals(expectedCharArray5, actualCharArray5);
+        assertArrayEquals(expectedCharArray6, actualCharArray6);
+    }*/
+
     @Test
-    public void arrayToString() {
+    public void should_convert_char_array_to_string() {
         //given
         final String expectedString = "[a,b,c,d]";
         lukCharList.save('a');
