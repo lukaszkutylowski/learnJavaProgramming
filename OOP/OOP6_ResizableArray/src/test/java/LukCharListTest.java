@@ -32,6 +32,37 @@ public class LukCharListTest {
     }
 
     @Test
+    public void should_check_save_char_by_length_index_find() {
+        //given
+        final char expectedChar1 = 'a';
+        final char expectedChar2 = 'b';
+        final char expectedChar3 = 'c';
+        final int expectedLength = 3;
+        final int expectedIndex1 = 0;
+        final int expectedIndex2 = 1;
+        final int expectedIndex3 = 2;
+        //when
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        final char actualChar1 = lukCharList.getByIndex(0);
+        final char actualChar2 = lukCharList.getByIndex(1);
+        final char actualChar3 = lukCharList.getByIndex(2);
+        final int actualLength = lukCharList.length();
+        final int actualLastFindIndex1 = lukCharList.findLast('a');
+        final int actualLastFindIndex2 = lukCharList.findLast('b');
+        final int actualLastFindIndex3 = lukCharList.findLast('c');
+        //then
+        assertEquals(actualChar1, expectedChar1);
+        assertEquals(actualChar2, expectedChar2);
+        assertEquals(actualChar3, expectedChar3);
+        assertEquals(actualLength, expectedLength);
+        assertEquals(actualLastFindIndex1, expectedIndex1);
+        assertEquals(actualLastFindIndex2, expectedIndex2);
+        assertEquals(actualLastFindIndex3, expectedIndex3);
+    }
+
+    @Test
     public void should_check_index_value() {
         //given
         lukCharList.save('a');

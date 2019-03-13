@@ -134,7 +134,7 @@ public class LukCharList implements CharList {
         return arrayAsString;
     }
 
-    @Overridegit
+    @Override
     public boolean equals(Object obj) {
         //this?
 
