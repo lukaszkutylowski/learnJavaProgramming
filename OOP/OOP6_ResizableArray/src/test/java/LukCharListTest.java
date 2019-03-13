@@ -455,22 +455,35 @@ public class LukCharListTest {
     @Test
     public void should_check_last_index_of_given_char() {
         //given
-        final int expectedIndex1 = 4;
-        final int expectedIndex2 = -1;
-        final int expectedIndex3 = 2;
+        final int expectedIndexOfA = 3;
+        final int expectedIndexOfE = -1;
+        final int expectedIndexOfB = 4;
+        final int expectedIndexOfC = 5;
+        final char expectedGetByIndexOfA = 'a';
+        final char expectedGetByIndexOfB = 'b';
+        final char expectedGetByIndexOfC = 'c';
         lukCharList.save('a');
         lukCharList.save('b');
         lukCharList.save('c');
-        lukCharList.save('d');
         lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
         //when
-        final int actualIndex1 = lukCharList.findLast('a');
-        final int actualIndex2 = lukCharList.findLast('e');
-        final int actualIndex3 = lukCharList.findLast('c');
+        final int actualIndexOfA = lukCharList.findLast('a');
+        final int actualIndexOfE = lukCharList.findLast('e');
+        final int actualIndexOfB = lukCharList.findLast('b');
+        final int actualIndexOfC = lukCharList.findLast('c');
+        final char actualGetByIndexOfA = lukCharList.getByIndex(lukCharList.findLast('a'));
+        final char actualGetByIndexOfB = lukCharList.getByIndex(lukCharList.findLast('b'));
+        final char actualGetByIndexOfC = lukCharList.getByIndex(lukCharList.findLast('c'));
         //then
-        assertEquals(expectedIndex1, actualIndex1);
-        assertEquals(expectedIndex2, actualIndex2);
-        assertEquals(expectedIndex3, actualIndex3);
+        assertEquals(expectedIndexOfA, actualIndexOfA);
+        assertEquals(expectedIndexOfE, actualIndexOfE);
+        assertEquals(expectedIndexOfB, actualIndexOfB);
+        assertEquals(expectedIndexOfC, actualIndexOfC);
+        assertEquals(expectedGetByIndexOfA, actualGetByIndexOfA);
+        assertEquals(expectedGetByIndexOfB, actualGetByIndexOfB);
+        assertEquals(expectedGetByIndexOfC, actualGetByIndexOfC);
     }
 
     @Test
