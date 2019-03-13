@@ -113,8 +113,8 @@ public class LukCharList implements CharList {
     public int[] deleteKindOfChar(char aChar) {
         int[] indexes = this.findAllIndex(aChar);
 
-        for (int index = 0; index < indexes.length - 1; index++) {
-            this.delete(index);
+        for (int index = 0; index <= indexes.length - 1; index++) {
+            this.delete(indexes[index]);
         }
 
         return indexes;
