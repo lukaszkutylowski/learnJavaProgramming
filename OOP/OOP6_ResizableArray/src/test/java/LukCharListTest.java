@@ -193,12 +193,21 @@ public class LukCharListTest {
     @Test
     public void should_check_array_length() {
         //given
-        final int expectedInt = 1;
-        lukCharList.save('5');
+        final int expectedInt = 3;
+        final int squareBracket = 2;
+        final int commas = 2;
+        final int expectedIntString = 3 + squareBracket + commas;
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
         //when
         final int actualInt = lukCharList.length();
+        final int actualArrayLength = lukCharList.getAll().length;
+        final int actualStringLength = lukCharList.toString().length();
         //then
         assertEquals(expectedInt, actualInt);
+        assertEquals(expectedInt, actualArrayLength);
+        assertEquals(expectedIntString, actualStringLength);
     }
 
     @Test
