@@ -223,18 +223,37 @@ public class LukCharListTest {
     @Test
     public void should_check_counting_chars_in_array() {
         //given
-        final int expectedNumber1 = 2;
-        final int expectedNumber2 = 0;
-        lukCharList.save('!');
-        lukCharList.save('?');
-        lukCharList.save('!');
-        lukCharList.save('?');
+        final int expectedNumberOfA = 5;
+        final int expectedNumberOfB = 2;
+        final int expectedNumberOfR = 2;
+        final int expectedNumberOfK = 1;
+        final int expectedNumberOfD = 1;
+        final int expectedNumberOfZ = 0;
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('r');
+        lukCharList.save('a');
+        lukCharList.save('k');
+        lukCharList.save('a');
+        lukCharList.save('d');
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('r');
+        lukCharList.save('a');
         //when
-        final int actualNumber1 = lukCharList.countChar('!');
-        final int actualNumber2 = lukCharList.countChar('$');
+        final int actualNumberOfA = lukCharList.countChar('a');
+        final int actualNumberOfB = lukCharList.countChar('b');
+        final int actualNumberOfR = lukCharList.countChar('r');
+        final int actualNumberOfK = lukCharList.countChar('k');
+        final int actualNumberOfD = lukCharList.countChar('d');
+        final int actualNumberOfZ = lukCharList.countChar('z');
         //then
-        assertEquals(expectedNumber1, actualNumber1);
-        assertEquals(expectedNumber2, actualNumber2);
+        assertEquals(expectedNumberOfA, actualNumberOfA);
+        assertEquals(expectedNumberOfB, actualNumberOfB);
+        assertEquals(expectedNumberOfR, actualNumberOfR);
+        assertEquals(expectedNumberOfK, actualNumberOfK);
+        assertEquals(expectedNumberOfD, actualNumberOfD);
+        assertEquals(expectedNumberOfZ, actualNumberOfZ);
     }
 
     @Test
