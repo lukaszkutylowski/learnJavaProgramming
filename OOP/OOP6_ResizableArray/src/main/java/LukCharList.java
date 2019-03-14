@@ -163,8 +163,4 @@ public class LukCharList implements CharList {
         int primeNumber = 37;
         return primeNumber * this.length() + this.length() << 8;
     }
-
-    //todo equals() and hashcode() @Override
-    //length
-    //for iteration all indexes
 }
