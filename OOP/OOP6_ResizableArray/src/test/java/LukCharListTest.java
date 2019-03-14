@@ -492,4 +492,12 @@ public class LukCharListTest {
 
         assertFalse(lukCharList.equals(new String("sfe")));
     }
+
+    @Test
+    public void should_check_hashcode() {
+        lukCharList.save('a');
+        lukCharList.save('b');
+        lukCharList.save('c');
+        System.out.println(lukCharList.hashCode());
+    }
 }

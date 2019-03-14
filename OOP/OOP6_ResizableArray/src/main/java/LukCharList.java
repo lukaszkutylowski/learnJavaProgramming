@@ -138,26 +138,33 @@ public class LukCharList implements CharList {
 
     @Override
     public boolean equals(Object obj) {
-        //this?
 
-        //instanceOf - czy mozna uzyc?
+        if (obj instanceof LukCharList){
 
+            if (obj.getClass().equals(this.getClass())) {
 
-        if (obj.getClass().equals(this.getClass())) {
-
-            LukCharList lukCharList = (LukCharList) obj;
-            if (lukCharList.getClass().equals(this.getClass()) && lukCharList.length() == this.length()) {
-                for (int index = 0; index < this.length() - 1; index++) {
-                    if (this.getByIndex(index) != lukCharList.getByIndex(index)) {
-                        return false;
+                LukCharList lukCharList = (LukCharList) obj;
+                if (lukCharList.getClass().equals(this.getClass()) && lukCharList.length() == this.length()) {
+                    for (int index = 0; index < this.length() - 1; index++) {
+                        if (this.getByIndex(index) != lukCharList.getByIndex(index)) {
+                            return false;
+                        }
                     }
+                    return true;
                 }
-                return true;
             }
+            return false;
         }
         return false;
     }
-//todo equals() and hashcode() @Override
+
+    @Override
+    public int hashCode() {
+        int primeNumber = 37;
+        return primeNumber * this.length() + this.length() << 8;
+    }
+
+    //todo equals() and hashcode() @Override
     //length
     //for iteration all indexes
 }
