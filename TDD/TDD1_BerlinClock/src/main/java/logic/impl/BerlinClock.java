@@ -27,27 +27,27 @@ public class BerlinClock implements Clock {
 
     private String processingSeconds(int secondsInt) {
         int evenOrOdd = secondsInt % 2 > 0 ? 1 : 0;
-        return Converter.convertSeconds(evenOrOdd);
+        return Engine.convertSeconds(evenOrOdd);
     }
 
     private String processingFiveHrs(int hoursInt) {
         int howManyHrsLight = hoursInt / 5;
-        return Converter.convertFiveHrs(howManyHrsLight);
+        return Engine.convertFiveHrs(howManyHrsLight);
     }
 
     private String processingSingleHrs(int hoursInt) {
         int multipleFiveHrs = hoursInt % 5;
-        return Converter.convertIntToString(multipleFiveHrs, 'H');
+        return Engine.convertIntToString(multipleFiveHrs, 'H');
     }
 
     private String processingFiveMinutes(int minutesInt) {
         int howMuchYellow = minutesInt / 5;
         int howMuchYYR = howMuchYellow / 3;
-        return Converter.fiveMinutesLightBulider(howMuchYellow, howMuchYYR);
+        return Engine.fiveMinutesLightBulider(howMuchYellow, howMuchYYR);
     }
 
     private String processingSingleMinutes(int minutesInt) {
         int mod = minutesInt % 5;
-        return Converter.convertIntToString(mod, 'M');
+        return Engine.convertIntToString(mod, 'M');
     }
 }
