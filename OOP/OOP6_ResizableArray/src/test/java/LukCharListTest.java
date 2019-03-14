@@ -355,33 +355,27 @@ public class LukCharListTest {
         final int expectedArrayLengthWithoutA = 0;
         final String expectedStringWithoutA = "[]";
         //when
-        System.out.println(lukCharList.toString());
         final int[] actualDeletedIndex1 = lukCharList.deleteKindOfChar('k');
-        System.out.println(lukCharList.toString());
         final char[] actualCharArrayWithoutK = lukCharList.getAll();
         final int actualArrayLengthWithoutK = lukCharList.length();
         final String actualStringWithoutK = lukCharList.toString();
 
         final int[] actualDeletedIndex2 = lukCharList.deleteKindOfChar('d');
-        System.out.println(lukCharList.toString());
         final char[] actualCharArrayWithoutD = lukCharList.getAll();
         final int actualArrayLengthWithoutD = lukCharList.length();
         final String actualStringWithoutD = lukCharList.toString();
 
         final int[] actualDeletedIndex3 = lukCharList.deleteKindOfChar('b');
-        System.out.println(lukCharList.toString());
         final char[] actualCharArrayWithoutB = lukCharList.getAll();
         final int actualArrayLengthWithoutB = lukCharList.length();
         final String actualStringWithoutB = lukCharList.toString();
 
         final int[] actualDeletedIndex4 = lukCharList.deleteKindOfChar('r');
-        System.out.println(lukCharList.toString());
         final char[] actualCharArrayWithoutR = lukCharList.getAll();
         final int actualArrayLengthWithoutR = lukCharList.length();
         final String actualStringWithoutR = lukCharList.toString();
 
         final int[] actualDeletedIndex5 = lukCharList.deleteKindOfChar('a');
-        System.out.println(lukCharList.toString());
         final char[] actualCharArrayWithoutA = lukCharList.getAll();
         final int actualArrayLengthWithoutA = lukCharList.length();
         final String actualStringWithoutA = lukCharList.toString();

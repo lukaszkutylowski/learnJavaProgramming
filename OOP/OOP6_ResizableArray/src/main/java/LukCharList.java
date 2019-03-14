@@ -96,13 +96,11 @@ public class LukCharList implements CharList {
     public int[] findAllIndex(char aChar) {
         int numberOfIndexes = 0;
         int[] temporaryArray = new int[this.length()];
-        int jIndex = 0;
 
         for (int index = 0; index < this.length(); index++) {
             if (this.getByIndex(index) == aChar) {
                 numberOfIndexes++;
-                temporaryArray[jIndex] = index;
-                jIndex++;
+                temporaryArray[index] = index;
             }
         }
         int[] finalArray = new int[numberOfIndexes];
