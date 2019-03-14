@@ -21,7 +21,7 @@ public class Engine {
         return newValue.toString();
     }
 
-    public static String convertIntToString(int modulo, char flag) {
+    public static String convertIntToLights(int modulo, char flag) {
         StringBuilder light = new StringBuilder();
 
         for (int i = 1; i <= modulo; i++) {

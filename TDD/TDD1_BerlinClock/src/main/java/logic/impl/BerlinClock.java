@@ -9,7 +9,7 @@ public class BerlinClock implements Clock {
 
     public String convertTime(String time) {
         int[] timeInt = new int[3];
-        int timeCharPosition = 0;
+        int timeCharPosition;
 
         for(int i = 0; i <= 2; i++) {
             if(i == 2) { timeCharPosition = 6; }
@@ -37,7 +37,7 @@ public class BerlinClock implements Clock {
 
     private String processingSingleHrs(int hoursInt) {
         int multipleFiveHrs = hoursInt % 5;
-        return Engine.convertIntToString(multipleFiveHrs, 'H');
+        return Engine.convertIntToLights(multipleFiveHrs, 'H');
     }
 
     private String processingFiveMinutes(int minutesInt) {
@@ -48,6 +48,6 @@ public class BerlinClock implements Clock {
 
     private String processingSingleMinutes(int minutesInt) {
         int mod = minutesInt % 5;
-        return Engine.convertIntToString(mod, 'M');
+        return Engine.convertIntToLights(mod, 'M');
     }
 }
