@@ -47,9 +47,8 @@ public class LukCharList implements CharList {
     }
 
     public char delete(int index) {
-        char[] temporaryArray = rewriteCharArray(body, new char[this.length()]);
         char deletedChar = this.getByIndex(index);
-        body = rewriteAndDeleteChar(temporaryArray, index);
+        body = rewriteAndDeleteChar(body,index);
         return deletedChar;
     }
 
