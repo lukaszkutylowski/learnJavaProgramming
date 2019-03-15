@@ -135,12 +135,10 @@ public class LukCharList implements CharList {
     @Override
     public boolean equals(Object obj) {
 
-        if (obj instanceof LukCharList){
-
             if (obj.getClass().equals(this.getClass())) {
 
                 LukCharList lukCharList = (LukCharList) obj;
-                if (lukCharList.getClass().equals(this.getClass()) && lukCharList.length() == this.length()) {
+                if (lukCharList.length() == this.length()) {
                     for (int index = 0; index < this.length() - 1; index++) {
                         if (this.getByIndex(index) != lukCharList.getByIndex(index)) {
                             return false;
@@ -150,8 +148,6 @@ public class LukCharList implements CharList {
                 }
             }
             return false;
-        }
-        return false;
     }
 
     @Override
