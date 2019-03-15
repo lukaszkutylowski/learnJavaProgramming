@@ -34,14 +34,14 @@ public class BerlinClock implements Clock {
     }
 
     private String processingSingleHrs(int hoursInt) {
-        return EngineBerlinClock.convertIntToLights(hoursInt, 'H');
+        return EngineBerlinClock.convertIntToLights(hoursInt, Enum.HOURS);
     }
 
     private String processingFiveMinutes(int minutesInt) {
-        return EngineBerlinClock.fiveMinutesLightBulider(minutesInt);
+        return EngineBerlinClock.fiveMinutesLightBuilder(minutesInt);
     }
 
     private String processingSingleMinutes(int minutesInt) {
-        return EngineBerlinClock.convertIntToLights(minutesInt, 'M');
+        return EngineBerlinClock.convertIntToLights(minutesInt, Enum.MINUTES);
     }
 }

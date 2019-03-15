@@ -23,12 +23,12 @@ public class EngineBerlinClock {
         return newValue.toString();
     }
 
-    public static String convertIntToLights(int hoursInt, char flag) {
+    public static String convertIntToLights(int hoursInt, Enum FLAG) {
         int multipleFiveHrs = hoursInt % 5;
         StringBuilder light = new StringBuilder();
 
         for (int i = 1; i <= multipleFiveHrs; i++) {
-            if (flag == 'H') {
+            if (FLAG == Enum.HOURS) {
                 light.append("R");
             } else {
                 light.append("Y");
@@ -41,7 +41,7 @@ public class EngineBerlinClock {
         return light.toString();
     }
 
-    public static String fiveMinutesLightBulider(int minutesInt) {
+    public static String fiveMinutesLightBuilder(int minutesInt) {
         int howMuchYellow = minutesInt / 5;
         int howMuchYYR = howMuchYellow / 3;
         final String yellow = "Y", red = "R", off = "O";
