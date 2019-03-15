@@ -9,13 +9,11 @@ public class BerlinClock implements Clock {
 
     public String convertTime(String time) {
         int[] timeInt = new int[3];
-        int timeCharPosition;
+        int timeCharIndexInString = 0;
 
-        for(int i = 0; i <= 2; i++) {
-            if(i == 2) { timeCharPosition = 6; }
-            else if(i == 1) { timeCharPosition = 3; }
-            else { timeCharPosition = 0; }
-            timeInt[i] = Converter.convertCharsToInt(time, timeCharPosition);
+        for (int index = 0; index <= 2; index++) {
+            timeInt[index] = Converter.convertCharsToInt(time, timeCharIndexInString);
+            timeCharIndexInString += 3;
         }
 
         return processingSeconds(timeInt[2])
