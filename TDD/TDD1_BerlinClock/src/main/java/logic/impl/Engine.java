@@ -2,7 +2,8 @@ package logic.impl;
 
 public class Engine {
 
-    public static String convertSeconds(int evenOrOdd) {
+    public static String convertSeconds(int secondsInt) {
+        int evenOrOdd = secondsInt % 2 > 0 ? 1 : 0;
         if(evenOrOdd == 0) {
             return "Y";
         } else {
@@ -11,20 +12,22 @@ public class Engine {
     }
 
     public static String convertFiveHrs(int hoursInt) {
+        int howManyHrsLight = hoursInt / 5;
         String initialValue = "OOOO";
         StringBuilder newValue = new StringBuilder(initialValue);
 
-        for (int i = hoursInt; i > 0; i--) {
+        for (int i = howManyHrsLight; i > 0; i--) {
             newValue.setCharAt(i - 1, 'R');
         }
 
         return newValue.toString();
     }
 
-    public static String convertIntToLights(int modulo, char flag) {
+    public static String convertIntToLights(int hoursInt, char flag) {
+        int multipleFiveHrs = hoursInt % 5;
         StringBuilder light = new StringBuilder();
 
-        for (int i = 1; i <= modulo; i++) {
+        for (int i = 1; i <= multipleFiveHrs; i++) {
             if (flag == 'H') {
                 light.append("R");
             } else {
@@ -38,7 +41,9 @@ public class Engine {
         return light.toString();
     }
 
-    public static String fiveMinutesLightBulider(int howMuchYellow, int howMuchYYR) {
+    public static String fiveMinutesLightBulider(int minutesInt) {
+        int howMuchYellow = minutesInt / 5;
+        int howMuchYYR = howMuchYellow / 3;
         final String yellow = "Y", red = "R", off = "O";
         StringBuilder lightFiveMinutes = new StringBuilder();
 
