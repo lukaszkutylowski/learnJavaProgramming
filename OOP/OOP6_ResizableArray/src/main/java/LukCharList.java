@@ -103,8 +103,7 @@ public class LukCharList implements CharList {
                 temporaryArray[index] = index;
             }
         }
-        int[] finalArray = new int[numberOfIndexes];
-        return rewriteIntArray(temporaryArray, finalArray);
+        return rewriteIntArray(temporaryArray, new int[numberOfIndexes]);
     }
 
     public int[] deleteKindOfChar(char aChar) {
@@ -157,7 +156,11 @@ public class LukCharList implements CharList {
 
     @Override
     public int hashCode() {
-        int primeNumber = 37;
-        return primeNumber * this.length() + this.length() << 8;
+        int sum = 0;
+        for(int index = 0; index < this.length(); index++) {
+            sum += (int) body[index];
+        }
+        Double d = new Double(Math.log(sum)*Math.sqrt(sum));
+        return d.intValue();
     }
 }
