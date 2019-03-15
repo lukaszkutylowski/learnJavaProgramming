@@ -1,6 +1,6 @@
 package logic.impl;
 
-public class Engine {
+public class EngineBerlinClock {
 
     public static String convertSeconds(int secondsInt) {
         int evenOrOdd = secondsInt % 2 > 0 ? 1 : 0;

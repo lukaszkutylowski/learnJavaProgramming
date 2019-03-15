@@ -26,22 +26,22 @@ public class BerlinClock implements Clock {
     }
 
     private String processingSeconds(int secondsInt) {
-        return Engine.convertSeconds(secondsInt);
+        return EngineBerlinClock.convertSeconds(secondsInt);
     }
 
     private String processingFiveHrs(int hoursInt) {
-        return Engine.convertFiveHrs(hoursInt);
+        return EngineBerlinClock.convertFiveHrs(hoursInt);
     }
 
     private String processingSingleHrs(int hoursInt) {
-        return Engine.convertIntToLights(hoursInt, 'H');
+        return EngineBerlinClock.convertIntToLights(hoursInt, 'H');
     }
 
     private String processingFiveMinutes(int minutesInt) {
-        return Engine.fiveMinutesLightBulider(minutesInt);
+        return EngineBerlinClock.fiveMinutesLightBulider(minutesInt);
     }
 
     private String processingSingleMinutes(int minutesInt) {
-        return Engine.convertIntToLights(minutesInt, 'M');
+        return EngineBerlinClock.convertIntToLights(minutesInt, 'M');
     }
 }
