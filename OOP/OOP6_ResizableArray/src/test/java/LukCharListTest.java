@@ -479,19 +479,4 @@ public class LukCharListTest {
         assertEquals(expectedGetByIndexOfB, actualGetByIndexOfB);
         assertEquals(expectedGetByIndexOfC, actualGetByIndexOfC);
     }
-
-    @Test
-    public void should_check_equals() {
-        LukCharList lukCharList1 = new LukCharList();
-
-        assertFalse(lukCharList.equals(new String("sfe")));
-    }
-
-    @Test
-    public void should_check_hashcode() {
-        lukCharList.save('a');
-        lukCharList.save('b');
-        lukCharList.save('c');
-        System.out.println(lukCharList.hashCode());
-    }
 }

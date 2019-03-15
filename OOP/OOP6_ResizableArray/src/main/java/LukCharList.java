@@ -64,7 +64,6 @@ public class LukCharList implements CharList {
                 numberOfChar++;
             }
         }
-
         return numberOfChar;
     }
 
@@ -99,8 +98,8 @@ public class LukCharList implements CharList {
 
         for (int index = 0; index < this.length(); index++) {
             if (this.getByIndex(index) == aChar) {
+                temporaryArray[numberOfIndexes] = index;
                 numberOfIndexes++;
-                temporaryArray[index] = index;
             }
         }
         return rewriteIntArray(temporaryArray, new int[numberOfIndexes]);
