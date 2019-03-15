@@ -318,7 +318,7 @@ public class LukCharListTest {
 
     @Test
     public void should_delete_all_given_char() {
-        //givengi
+        //given
         lukCharList.save('a');
         lukCharList.save('b');
         lukCharList.save('r');

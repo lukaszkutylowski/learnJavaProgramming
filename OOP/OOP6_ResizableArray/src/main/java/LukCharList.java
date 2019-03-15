@@ -21,8 +21,7 @@ public class LukCharList implements CharList {
         return copy;
     }
 
-    private char[] rewriteAndDeleteChar(char[] array, int indexOfDeleted) {
-        char[] temp = new char[this.length() - 1];
+    private char[] rewriteAndDeleteChar(char[] array, char[] temp, int indexOfDeleted) {
         int arrayIndex = 0;
 
         for (int index = 0; index < this.length() - 1; index++) {
@@ -48,7 +47,7 @@ public class LukCharList implements CharList {
 
     public char delete(int index) {
         char deletedChar = this.getByIndex(index);
-        body = rewriteAndDeleteChar(body,index);
+        body = rewriteAndDeleteChar(body, new char[this.length() - 1], index);
         return deletedChar;
     }
 
@@ -123,7 +122,7 @@ public class LukCharList implements CharList {
             arrayAsString += this.getByIndex(index) + ",";
         }
         int lastIndex = arrayAsString.length() - 1;
-        if(arrayAsString.length() > 1) {
+        if (arrayAsString.length() > 1) {
             arrayAsString = arrayAsString.substring(0, lastIndex);
         }
         arrayAsString += "]";
@@ -134,28 +133,28 @@ public class LukCharList implements CharList {
     @Override
     public boolean equals(Object obj) {
 
-            if (obj.getClass().equals(this.getClass())) {
+        if (obj.getClass().equals(this.getClass())) {
 
-                LukCharList lukCharList = (LukCharList) obj;
-                if (lukCharList.length() == this.length()) {
-                    for (int index = 0; index < this.length() - 1; index++) {
-                        if (this.getByIndex(index) != lukCharList.getByIndex(index)) {
-                            return false;
-                        }
+            LukCharList lukCharList = (LukCharList) obj;
+            if (lukCharList.length() == this.length()) {
+                for (int index = 0; index < this.length() - 1; index++) {
+                    if (this.getByIndex(index) != lukCharList.getByIndex(index)) {
+                        return false;
                     }
-                    return true;
                 }
+                return true;
             }
-            return false;
+        }
+        return false;
     }
 
     @Override
     public int hashCode() {
         int sum = 0;
-        for(int index = 0; index < this.length(); index++) {
+        for (int index = 0; index < this.length(); index++) {
             sum += (int) body[index];
         }
-        Double d = new Double(Math.log(sum)*Math.sqrt(sum));
+        Double d = new Double(Math.log(sum) * Math.sqrt(sum));
         return d.intValue();
     }
 }
