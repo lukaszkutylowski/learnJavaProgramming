@@ -4,9 +4,9 @@ public class EngineBerlinClock {
 
     public static String convertSeconds(int secondsInt) {
         if (secondsInt % 2 == 0) {
-            return "Y";
+            return Enum.YELLOW.getLight();
         } else {
-            return "O";
+            return Enum.OFF.getLight();
         }
     }
 
@@ -26,14 +26,14 @@ public class EngineBerlinClock {
 
         for (int i = 1; i <= multipleFiveHrs; i++) {
             if (FLAG == Enum.HOURS) {
-                light.append("R");
+                light.append(Enum.RED.getLight());
             } else {
-                light.append("Y");
+                light.append(Enum.YELLOW.getLight());
             }
         }
 
         while (light.length() < 4)
-            light.append("O");
+            light.append(Enum.OFF.getLight());
 
         return light.toString();
     }
@@ -41,18 +41,17 @@ public class EngineBerlinClock {
     public static String fiveMinutesLightBuilder(int minutesInt) {
         int howMuchYellow = minutesInt / 5;
         int howMuchYYR = howMuchYellow / 3;
-        final String yellow = "Y", red = "R", off = "O";
         StringBuilder lightFiveMinutes = new StringBuilder();
 
         for(int i = 1; i <= howMuchYYR; i++) {
-            lightFiveMinutes.append(yellow + yellow + red);
+            lightFiveMinutes.append(Enum.YELLOW.getLight() + Enum.YELLOW.getLight() + Enum.RED.getLight());
         }
 
         for (int j = 1; j <= howMuchYellow - howMuchYYR * 3; j++) {
-            lightFiveMinutes.append(yellow);
+            lightFiveMinutes.append(Enum.YELLOW.getLight());
         }
         while (lightFiveMinutes.length() < 11) {
-            lightFiveMinutes.append(off);
+            lightFiveMinutes.append(Enum.OFF.getLight());
         }
 
         return lightFiveMinutes.toString();
