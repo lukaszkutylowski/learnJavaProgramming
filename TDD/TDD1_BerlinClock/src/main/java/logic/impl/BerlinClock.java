@@ -28,7 +28,7 @@ public class BerlinClock implements Clock {
     }
 
     private String processingFiveHrs(int hoursInt) {
-        return EngineBerlinClock.convertFiveHrs(hoursInt);
+        return EngineBerlinClock.convertFiveHrs(hoursInt / 5);
     }
 
     private String processingSingleHrs(int hoursInt) {

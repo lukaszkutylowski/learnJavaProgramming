@@ -3,23 +3,20 @@ package logic.impl;
 public class EngineBerlinClock {
 
     public static String convertSeconds(int secondsInt) {
-        int evenOrOdd = secondsInt % 2 > 0 ? 1 : 0;
-        if(evenOrOdd == 0) {
+        if (secondsInt % 2 == 0) {
             return "Y";
         } else {
             return "O";
         }
     }
 
-    public static String convertFiveHrs(int hoursInt) {
-        int howManyHrsLight = hoursInt / 5;
+    public static String convertFiveHrs(int howManyHrsLight) {
         String initialValue = "OOOO";
         StringBuilder newValue = new StringBuilder(initialValue);
 
         for (int i = howManyHrsLight; i > 0; i--) {
             newValue.setCharAt(i - 1, 'R');
         }
-
         return newValue.toString();
     }
 
