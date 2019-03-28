@@ -16,7 +16,7 @@ public class LukCharListTest {
     }
 
     @Test
-    public void should_check_save_char() {
+    public void should_check_index_of_saved_char() {
         //given
         final int expectedIntPosition0 = 0;
         final int expectedIntPosition1 = 1;
@@ -193,31 +193,24 @@ public class LukCharListTest {
     @Test
     public void should_check_array_length() {
         //given
+        final int expectedIntWhenEmpty = 0;
         final int expectedInt = 3;
         final int squareBracket = 2;
         final int commas = 2;
         final int expectedIntString = 3 + squareBracket + commas;
+        //when
+        final int actualIntWhenEmpty = lukCharList.length();
         lukCharList.save('a');
         lukCharList.save('b');
         lukCharList.save('c');
-        //when
         final int actualInt = lukCharList.length();
         final int actualArrayLength = lukCharList.getAll().length;
         final int actualStringLength = lukCharList.toString().length();
         //then
+        assertEquals(expectedIntWhenEmpty, actualIntWhenEmpty);
         assertEquals(expectedInt, actualInt);
         assertEquals(expectedInt, actualArrayLength);
         assertEquals(expectedIntString, actualStringLength);
-    }
-
-    @Test
-    public void should_check_array_length_when_is_empty() {
-        //given
-        final int expectedInt = 0;
-        //when
-        final int actualInt = lukCharList.length();
-        //then
-        assertEquals(expectedInt, actualInt);
     }
 
     @Test
