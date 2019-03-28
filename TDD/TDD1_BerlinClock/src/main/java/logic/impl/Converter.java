@@ -6,10 +6,8 @@ public class Converter {
         int timeInt;
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append(time.charAt(timeCharIndexInString));
-        stringBuilder.append(time.charAt(timeCharIndexInString + 1));
+        stringBuilder.append(time.substring(timeCharIndexInString, timeCharIndexInString + 2));
         timeInt = Integer.parseInt(stringBuilder.toString());
-        stringBuilder.setLength(0);
 
         return timeInt;
     }

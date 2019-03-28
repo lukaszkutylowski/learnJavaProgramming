@@ -4,36 +4,37 @@ public class EngineBerlinClock {
 
     public static String convertSeconds(int secondsInt) {
         if (secondsInt % 2 == 0) {
-            return Enum.YELLOW.getLight();
+            return Lights.YELLOW.getLight();
         } else {
-            return Enum.OFF.getLight();
+            return Lights.OFF.getLight();
         }
     }
 
-    public static String convertFiveHrs(int howManyHrsLight) {
-        String initialValue = "OOOO";
+    public static String convertFiveHrs(int hoursInt) {
+        int howManyHrsLight = hoursInt / 5;
+        String initialValue = Lights.INITIAL.getLight();
         StringBuilder newValue = new StringBuilder(initialValue);
 
         for (int i = howManyHrsLight; i > 0; i--) {
-            newValue.setCharAt(i - 1, 'R');
+            newValue.setCharAt(i - 1, Lights.RED.getLight().charAt(0));
         }
         return newValue.toString();
     }
 
-    public static String convertIntToLights(int hoursInt, Enum FLAG) {
+    public static String convertIntToHoursOrMinutesString(int hoursInt, Flag FLAG) {
         int multipleFiveHrs = hoursInt % 5;
         StringBuilder light = new StringBuilder();
 
         for (int i = 1; i <= multipleFiveHrs; i++) {
-            if (FLAG == Enum.HOURS) {
-                light.append(Enum.RED.getLight());
+            if (FLAG == FLAG.HOURS) {
+                light.append(Lights.RED.getLight());
             } else {
-                light.append(Enum.YELLOW.getLight());
+                light.append(Lights.YELLOW.getLight());
             }
         }
 
         while (light.length() < 4)
-            light.append(Enum.OFF.getLight());
+            light.append(Lights.OFF.getLight());
 
         return light.toString();
     }
@@ -44,14 +45,14 @@ public class EngineBerlinClock {
         StringBuilder lightFiveMinutes = new StringBuilder();
 
         for(int i = 1; i <= howMuchYYR; i++) {
-            lightFiveMinutes.append(Enum.YELLOW.getLight() + Enum.YELLOW.getLight() + Enum.RED.getLight());
+            lightFiveMinutes.append(Lights.YELLOW.getLight() + Lights.YELLOW.getLight() + Lights.RED.getLight());
         }
 
         for (int j = 1; j <= howMuchYellow - howMuchYYR * 3; j++) {
-            lightFiveMinutes.append(Enum.YELLOW.getLight());
+            lightFiveMinutes.append(Lights.YELLOW.getLight());
         }
         while (lightFiveMinutes.length() < 11) {
-            lightFiveMinutes.append(Enum.OFF.getLight());
+            lightFiveMinutes.append(Lights.OFF.getLight());
         }
 
         return lightFiveMinutes.toString();

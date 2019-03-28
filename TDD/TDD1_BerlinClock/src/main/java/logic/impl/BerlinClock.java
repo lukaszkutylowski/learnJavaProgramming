@@ -28,11 +28,11 @@ public class BerlinClock implements Clock {
     }
 
     private String processingFiveHrs(int hoursInt) {
-        return EngineBerlinClock.convertFiveHrs(hoursInt / 5);
+        return EngineBerlinClock.convertFiveHrs(hoursInt);
     }
 
     private String processingSingleHrs(int hoursInt) {
-        return EngineBerlinClock.convertIntToLights(hoursInt, Enum.HOURS);
+        return EngineBerlinClock.convertIntToHoursOrMinutesString(hoursInt, Flag.HOURS);
     }
 
     private String processingFiveMinutes(int minutesInt) {
@@ -40,6 +40,6 @@ public class BerlinClock implements Clock {
     }
 
     private String processingSingleMinutes(int minutesInt) {
-        return EngineBerlinClock.convertIntToLights(minutesInt, Enum.MINUTES);
+        return EngineBerlinClock.convertIntToHoursOrMinutesString(minutesInt, Flag.MINUTES);
     }
 }

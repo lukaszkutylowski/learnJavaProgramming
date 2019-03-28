@@ -1,15 +1,14 @@
 package logic.impl;
 
-public enum Enum {
-    HOURS(""),
-    MINUTES(""),
+public enum Lights {
     OFF("O"),
     YELLOW("Y"),
-    RED("R");
+    RED("R"),
+    INITIAL("OOOO");
 
     final private String light;
 
-    Enum(String lightClock) {
+    Lights(String lightClock) {
         light = lightClock;
     }
 
