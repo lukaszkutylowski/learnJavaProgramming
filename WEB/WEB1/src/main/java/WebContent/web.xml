@@ -20,4 +20,12 @@
     <servlet-name>Second Servlet</servlet-name>
     <url-pattern>/binaryApp</url-pattern>
 </servlet-mapping>
+servlet>
+<servlet-name>Third Servlet</servlet-name>
+<servlet-class>dev.javaee.servlets.ThirdServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>Third Servlet</servlet-name>
+<url-pattern>/showImageApp</url-pattern>
+</servlet-mapping>
 </web-app>
