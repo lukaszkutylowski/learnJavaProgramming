@@ -10,6 +10,14 @@
 </servlet>
 <servlet-mapping>
     <servlet-name>First Servlet</servlet-name>
-    <url-pattern>/app</url-pattern>
+    <url-pattern>/textApp</url-pattern>
+</servlet-mapping>
+<servlet>
+    <servlet-name>Second Servlet</servlet-name>
+    <servlet-class>dev.javaee.servlets.SecondServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Second Servlet</servlet-name>
+    <url-pattern>/binaryApp</url-pattern>
 </servlet-mapping>
 </web-app>
