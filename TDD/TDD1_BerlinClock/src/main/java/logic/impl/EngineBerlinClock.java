@@ -1,60 +1,70 @@
 package logic.impl;
 
+import logic.ResizbleArray.LukCharList;
+
 public class EngineBerlinClock {
 
-    public static String convertSeconds(int secondsInt) {
+    public static LukCharList convertSeconds(int secondsInt, LukCharList list) {
         if (secondsInt % 2 == 0) {
-            return Lights.YELLOW.getLight();
+            list.save(Lights.YELLOW.getLight());
         } else {
-            return Lights.OFF.getLight();
+            list.save(Lights.OFF.getLight());
         }
+        return list;
     }
 
-    public static String convertFiveHrs(int hoursInt) {
+    public static LukCharList convertFiveHrs(int hoursInt, LukCharList list) {
         int howManyHrsLight = hoursInt / 5;
-        String initialValue = Lights.INITIAL.getLight();
-        StringBuilder newValue = new StringBuilder(initialValue);
+        int howManyOffLight = 4 - howManyHrsLight;
 
-        for (int i = howManyHrsLight; i > 0; i--) {
-            newValue.setCharAt(i - 1, Lights.RED.getLight().charAt(0));
+        for (int i = 0; i < howManyHrsLight; i++) {
+            list.save(Lights.RED.getLight());
         }
-        return newValue.toString();
+        for (int j = 0; j < howManyOffLight; j++) {
+            list.save(Lights.OFF.getLight());
+        }
+        return list;
     }
 
-    public static String convertIntToHoursOrMinutesString(int hoursInt, Flag FLAG) {
-        int multipleFiveHrs = hoursInt % 5;
-        StringBuilder light = new StringBuilder();
+    public static LukCharList convertIntToHoursOrMinutesString(int hoursInt, Flag FLAG, LukCharList list) {
+        int howMuchFiveHrs = hoursInt % 5;
+        int howMuchOff = 4 - howMuchFiveHrs;
 
-        for (int i = 1; i <= multipleFiveHrs; i++) {
+        for (int i = 0; i < howMuchFiveHrs; i++) {
             if (FLAG == FLAG.HOURS) {
-                light.append(Lights.RED.getLight());
+                list.save(Lights.RED.getLight());
             } else {
-                light.append(Lights.YELLOW.getLight());
+                list.save(Lights.YELLOW.getLight());
             }
         }
+        for (int j = 0; j < howMuchOff; j++) {
+            list.save(Lights.OFF.getLight());
+        }
 
-        while (light.length() < 4)
-            light.append(Lights.OFF.getLight());
-
-        return light.toString();
+        return list;
     }
 
-    public static String fiveMinutesLightBuilder(int minutesInt) {
+    public static LukCharList fiveMinutesLightBuilder(int minutesInt, LukCharList list) {
         int howMuchYellow = minutesInt / 5;
         int howMuchYYR = howMuchYellow / 3;
-        StringBuilder lightFiveMinutes = new StringBuilder();
+        int addedLightCounter = 0;
 
-        for(int i = 1; i <= howMuchYYR; i++) {
-            lightFiveMinutes.append(Lights.YELLOW.getLight() + Lights.YELLOW.getLight() + Lights.RED.getLight());
+        for(int i = 0; i < howMuchYYR; i++) {
+            list.save(Lights.YELLOW.getLight());
+            list.save(Lights.YELLOW.getLight());
+            list.save(Lights.RED.getLight());
+            addedLightCounter += 3;
         }
 
-        for (int j = 1; j <= howMuchYellow - howMuchYYR * 3; j++) {
-            lightFiveMinutes.append(Lights.YELLOW.getLight());
-        }
-        while (lightFiveMinutes.length() < 11) {
-            lightFiveMinutes.append(Lights.OFF.getLight());
+        for (int j = 0; j < howMuchYellow - howMuchYYR * 3; j++) {
+            list.save(Lights.YELLOW.getLight());
+            addedLightCounter++;
         }
 
-        return lightFiveMinutes.toString();
+        for (int k = 0; k < 11 - addedLightCounter; k++) {
+            list.save(Lights.OFF.getLight());
+        }
+
+        return list;
     }
 }
