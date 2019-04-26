@@ -23,4 +23,6 @@ public interface CharList {
     int[] deleteKindOfChar(char letter);
 
     String toString();
+
+    String toServletString();
 }
