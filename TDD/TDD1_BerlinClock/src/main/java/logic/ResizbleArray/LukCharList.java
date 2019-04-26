@@ -116,6 +116,20 @@ public class LukCharList implements CharList {
         return indexes;
     }
 
+    public String toServletString() {
+        String arrayAsString = "";
+
+        for (int index = 0; index < this.length(); index++) {
+            arrayAsString += this.getByIndex(index);
+        }
+//        int lastIndex = arrayAsString.length() - 1;
+//        if (arrayAsString.length() > 1) {
+//            arrayAsString = arrayAsString.substring(0, lastIndex);
+//        }
+
+        return arrayAsString;
+    }
+
     @Override
     public String toString() {
         String arrayAsString = "[";
