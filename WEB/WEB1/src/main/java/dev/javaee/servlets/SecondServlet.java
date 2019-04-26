@@ -1,3 +1,4 @@
+//delete package line before mvn compile - path in Apache Tomcat is different
 package dev.javaee.servlets;
 
 import javax.servlet.ServletException;
