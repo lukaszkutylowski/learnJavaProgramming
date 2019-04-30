@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 public class ServletBerlinClock extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
             response.setContentType("text/html; charset=utf-8");
             PrintWriter pw = response.getWriter();
@@ -28,14 +28,10 @@ public class ServletBerlinClock extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html; charset=utf-8");
         PrintWriter pw = response.getWriter();
+        BerlinClock clock = new BerlinClock();
 
         String inputTime = request.getParameter("textTime");
-
-        BerlinClock clock = new BerlinClock();
-        clock.convertTime(inputTime);
-
         String Lights = clock.convertTime(inputTime);
-
         pw.println(Lights);
     }
 }
