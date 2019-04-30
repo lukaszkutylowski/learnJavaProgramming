@@ -1,5 +1,3 @@
-package Berlin;
-
 public enum Lights {
     OFF('O'),
     YELLOW('Y'),

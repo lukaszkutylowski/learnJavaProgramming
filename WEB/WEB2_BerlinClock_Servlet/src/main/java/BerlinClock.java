@@ -1,8 +1,3 @@
-package Berlin;
-
-import Resizable.Clock;
-import Resizable.LukCharList;
-
 public class BerlinClock implements Clock {
 
     public BerlinClock() {

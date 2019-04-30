@@ -1,5 +1,3 @@
-package Resizable;
-
 public interface CharList {
 
         int save(char letter);

@@ -1,5 +1,3 @@
-package Resizable;
-
 public class LukCharList implements CharList {
 
     private char[] body;

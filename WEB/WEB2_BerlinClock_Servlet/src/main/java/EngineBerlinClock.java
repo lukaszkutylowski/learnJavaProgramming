@@ -1,7 +1,3 @@
-package Berlin;
-
-import Resizable.LukCharList;
-
 public class EngineBerlinClock {
 
     public static LukCharList convertSeconds(int secondsInt, LukCharList list) {

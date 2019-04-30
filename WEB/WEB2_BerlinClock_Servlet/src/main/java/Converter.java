@@ -1,5 +1,3 @@
-package Berlin;
-
 public class Converter {
 
     public static int convertCharsToInt(String time, int timeCharIndexInString) {
