@@ -12,17 +12,13 @@ public class FirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         try {
-            res.setContentType("text/plain; charset=utf-8");
+            res.setContentType("text/html; charset=utf-8");
             PrintWriter pw = res.getWriter();
-            pw.println("<html>");
-            pw.println("    <head>");
-            pw.println("        <title>First Servlet App</title>");
-            pw.println("    </head>");
-            pw.println("    <body>");
-            pw.println("        <p>first line: message 1</p>");
-            pw.println("        <p>second line: message 2</p>");
-            pw.println("    </body>");
-            pw.println("</html>");
+            pw.println("<html><head><title>First Servlet App!</title></head>");
+            pw.println("<body>");
+            pw.println("<p>first line: message 1</p>");
+            pw.println("<p>second line: message 2</p>");
+            pw.println("</body></html>");
         } catch (IOException e) {}
 
     }
