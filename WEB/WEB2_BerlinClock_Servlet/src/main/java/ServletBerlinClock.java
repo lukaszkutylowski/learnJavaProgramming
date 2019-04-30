@@ -15,10 +15,10 @@ public class ServletBerlinClock extends HttpServlet {
 
             pw.println("<html><head><title>Clock App</title></head>");
             pw.println("<body>");
-            pw.println("<p>Berlin Clock Servlet App</p>");
-            pw.println("<p3>Program which take time in format: hh:mm:ss and return Lights of Berlin Clock (red, yellow, off)</p3>");
+            pw.println("<p><h1>Berlin Clock Servlet App</h1></p>");
+            pw.println("<p><h3>Program which take time in format: hh:mm:ss and return Lights of Berlin Clock (red, yellow, off)</h3></p>");
             pw.println("<form method=\"post\">");
-            pw.println("<input name=\"textTime\" /> <input type=\"submit\" value=\"OK\" />");
+            pw.println("<h3><input name=\"textTime\" /> <input type=\"submit\" value=\"OK\" /></h3>");
             pw.println("</form");
             pw.println("</body></html>");
         } catch (IOException e) {}
