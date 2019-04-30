@@ -28,4 +28,14 @@ servlet>
 <servlet-name>Third Servlet</servlet-name>
 <url-pattern>/showImageApp</url-pattern>
 </servlet-mapping>
+
+<servlet>
+<servlet-name>Cookie Servlet</servlet-name>
+<servlet-class>dev.javaee.servlets.CookieServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>Cookie Servlet</servlet-name>
+<url-pattern>/cookie</url-pattern>
+</servlet-mapping>
+
 </web-app>
