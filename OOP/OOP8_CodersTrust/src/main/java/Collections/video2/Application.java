@@ -1,5 +1,7 @@
 package Collections.video2;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -41,5 +43,10 @@ public class Application {
         }
 
         System.out.println(map.get("Imię"));
+
+        JFrame frame = new JFrame("My Window");
+        frame.setVisible(true);
+        frame.add(new TextField());
+        frame.setVisible(true);
     }
 }
