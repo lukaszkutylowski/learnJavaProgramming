@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MyList implements List {
+public class MyAwesomeList implements List {
 
     @Override
     public int size() {

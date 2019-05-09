@@ -1,4 +1,4 @@
-package Collections;
+package Collections.video1;
 
 import java.util.*;
 
