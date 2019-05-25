@@ -35,6 +35,19 @@ public class WebClass {
         }
 
 
+        System.out.println("-------------------- URL --------------------");
+
+        URL url = new URL("https://sportowefakty.wp.pl/pilka-nozna/823886/gole-lewandowskiego-daly-bayernowi-monachium-puchar-niemiec");
+
+        System.out.println("Protocol: " + url.getProtocol());
+        System.out.println("Computer: " + url.getHost());
+        System.out.println("Port: " + url.getPort());
+        System.out.println("File: " + url.getFile());
+        System.out.println("Full address: " + url.toExternalForm());
+
+
+
+
 
     }
 }
