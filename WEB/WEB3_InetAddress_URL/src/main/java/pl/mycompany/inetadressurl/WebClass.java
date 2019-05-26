@@ -1,14 +1,13 @@
 package pl.mycompany.inetadressurl;
 
-import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.UnknownHostException;
+import java.io.IOException;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 public class WebClass {
-    public static void main(String[] args) throws UnknownHostException, MalformedURLException {
+    public static void main(String[] args) throws IOException {
 
         System.out.println("--------------- InetAddress ----------------");
 
@@ -46,8 +45,23 @@ public class WebClass {
         System.out.println("Full address: " + url.toExternalForm());
 
 
+        System.out.println("--------------- URL Connection ---------------");
 
+        URL u = new URL("http://onet.pl");
+        URLConnection urlConnection = u.openConnection();
 
+        long data = urlConnection.getDate();
+        System.out.println(new Date(data));
 
+        System.out.println(urlConnection.getContentType());
+
+        data = urlConnection.getExpiration();
+        System.out.println(new Date(data));
+
+        data = urlConnection.getLastModified();
+        System.out.println(new Date(data));
+
+        int x = urlConnection.getContentLength();
+        System.out.println(x);
     }
 }
