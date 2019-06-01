@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigClass {
     @Bean
     public InterfacePizza pizzaMethod() {
-        return new MyPizza(10,"Pyszna");
+        return new AnotherPizza(15,"Another Pizza");
     }
 
     @Bean
