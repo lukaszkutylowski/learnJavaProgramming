@@ -24,17 +24,7 @@ public class Process {
                 i++;
             }
         }
-/*
-        int blue, green, red;
 
-        //show all RBG pixels
-        for (int j = 0; j < 100; j++) {
-            blue = matrix[j] & 0xff;
-            green = (matrix[j] & 0xff00) >> 8;
-            red = (matrix[j] & 0xff0000) >> 16;
-            System.out.println("R:" + red + ", G:" + green + ", B:" + blue);
-        }
-*/
         return matrix;
     }
 
