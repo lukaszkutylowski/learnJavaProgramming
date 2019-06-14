@@ -1,6 +1,7 @@
 package logic.impl;
 
 import logic.Clock;
+import logic.ResizbleArray.LukCharList;
 
 public class BerlinClock implements Clock {
 
@@ -16,30 +17,34 @@ public class BerlinClock implements Clock {
             timeCharIndexInString += 3;
         }
 
-        return processingSeconds(timeInt[2])
-                + processingFiveHrs(timeInt[0])
-                + processingSingleHrs(timeInt[0])
-                + processingFiveMinutes(timeInt[1])
-                + processingSingleMinutes(timeInt[1]);
+        LukCharList list = new LukCharList();
+
+        processingSeconds(timeInt[2],list);
+        processingFiveHrs(timeInt[0],list);
+        processingSingleHrs(timeInt[0], list);
+        processingFiveMinutes(timeInt[1], list);
+        processingSingleMinutes(timeInt[1], list);
+
+        return list.toServletString();
     }
 
-    private String processingSeconds(int secondsInt) {
-        return EngineBerlinClock.convertSeconds(secondsInt);
+    private LukCharList processingSeconds(int secondsInt, LukCharList list) {
+        return EngineBerlinClock.convertSeconds(secondsInt, list);
     }
 
-    private String processingFiveHrs(int hoursInt) {
-        return EngineBerlinClock.convertFiveHrs(hoursInt);
+    private LukCharList processingFiveHrs(int hoursInt, LukCharList list) {
+        return EngineBerlinClock.convertFiveHrs(hoursInt, list);
     }
 
-    private String processingSingleHrs(int hoursInt) {
-        return EngineBerlinClock.convertIntToHoursOrMinutesString(hoursInt, Flag.HOURS);
+    private LukCharList processingSingleHrs(int hoursInt, LukCharList list) {
+        return EngineBerlinClock.convertIntToHoursOrMinutesString(hoursInt, Flag.HOURS, list);
     }
 
-    private String processingFiveMinutes(int minutesInt) {
-        return EngineBerlinClock.fiveMinutesLightBuilder(minutesInt);
+    private LukCharList processingFiveMinutes(int minutesInt, LukCharList list) {
+        return EngineBerlinClock.fiveMinutesLightBuilder(minutesInt, list);
     }
 
-    private String processingSingleMinutes(int minutesInt) {
-        return EngineBerlinClock.convertIntToHoursOrMinutesString(minutesInt, Flag.MINUTES);
+    private LukCharList processingSingleMinutes(int minutesInt, LukCharList list) {
+        return EngineBerlinClock.convertIntToHoursOrMinutesString(minutesInt, Flag.MINUTES, list);
     }
 }

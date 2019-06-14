@@ -1,18 +1,18 @@
 package logic.impl;
 
 public enum Lights {
-    OFF("O"),
-    YELLOW("Y"),
-    RED("R"),
-    INITIAL("OOOO");
+    OFF('O'),
+    YELLOW('Y'),
+    RED('R'),
+    INITIAL('O');
 
-    final private String light;
+    final private char light;
 
-    Lights(String lightClock) {
+    Lights(char lightClock) {
         light = lightClock;
     }
 
-    public String getLight() {
+    public char getLight() {
         return light;
     }
 }
